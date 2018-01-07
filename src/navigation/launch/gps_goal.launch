@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+	<node pkg="navigation" type="GPS_goal.py" name="GPS_goal">
+		<rosparam file="$(find navigation)/config/gps_data.yaml" command="load" />
+    </node>
+
+
+</launch>
