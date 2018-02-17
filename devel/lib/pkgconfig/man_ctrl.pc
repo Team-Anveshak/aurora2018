@@ -1,0 +1,8 @@
+prefix=/home/niyas/aurora2018/devel
+
+Name: man_ctrl
+Description: Description of man_ctrl
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/niyas/aurora2018/devel/lib 
+Requires: 

@@ -1,4 +1,6 @@
-float64 left
-float64 right
-int16 reset_flag
+float64 left_front_vel
+float64 right_front_vel
+float64 left_back_vel
+float64 right_back_vel
+float64 rot
 

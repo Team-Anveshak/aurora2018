@@ -1,0 +1,8 @@
+prefix=/home/niyas/aurora2018/install
+
+Name: nmea_navsat_driver
+Description: Description of nmea_navsat_driver
+Version: 0.5.0
+Cflags: 
+Libs: -L/home/niyas/aurora2018/install/lib 
+Requires: 
