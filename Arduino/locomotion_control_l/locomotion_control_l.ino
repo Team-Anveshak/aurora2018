@@ -29,6 +29,28 @@ int tl = 0,tr = 0, bl = 0, br = 0;
 float lt = 0,rt = 0,lb = 0,rb = 0;
 float lpot = 0,rpot = 0,set = 0; 
 
+const int freq1 = 21000000;
+const int freq2 = 21000000;
+const int minfreq1 = 641;
+
+void SetPinFrequency(int pin,int frequency,int clock,int duty)
+{
+    //Configure Pin
+  PIO_Configure(g_APinDescription[pin].pPort,
+  g_APinDescription[pin].ulPinType,
+  g_APinDescription[pin].ulPin,
+  g_APinDescription[pin].ulPinConfiguration);
+  //Set Pin to count off CLKA set at freq1
+  int chan = g_APinDescription[pin].ulPWMChannel;
+  int clk = clock == 1 ? PWM_CMR_CPRE_CLKA : PWM_CMR_CPRE_CLKB;
+  PWMC_ConfigureChannel(PWM_INTERFACE,chan,clk,0,0);
+  int divider = 42000000/frequency;
+  PWMC_SetPeriod(PWM_INTERFACE,chan,divider);
+  PWMC_SetDutyCycle(PWM_INTERFACE,chan,duty);
+  PWMC_EnableChannel(PWM_INTERFACE,chan);
+}
+
+
 ros::NodeHandle nh;
 
 rover_msgs::WheelVelocity RoverVel;
@@ -40,13 +62,14 @@ void loco(int vel,int dir_pin,int pwm_pin,int slp_pin)
     {
      //digitalWrite(slp_pin,HIGH);
      digitalWrite(dir_pin,LOW);
-     analogWrite(pwm_pin,abs(vel));
+     SetPinFrequency(pwm_pin,54000,1,abs(vel));
+     
     }
   else
     { 
       //digitalWrite(slp_pin,HIGH);
       digitalWrite(dir_pin,HIGH);
-      analogWrite(pwm_pin,abs(vel));
+      SetPinFrequency(pwm_pin,54000,1,abs(vel));
     }
 }
 
