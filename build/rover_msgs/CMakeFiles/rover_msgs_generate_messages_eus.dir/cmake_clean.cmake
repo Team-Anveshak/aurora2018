@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rover_msgs_generate_messages_eus"
-  "/home/niyas/aurora2018/devel/share/roseus/ros/rover_msgs/msg/WheelVelocity.l"
-  "/home/niyas/aurora2018/devel/share/roseus/ros/rover_msgs/msg/enc.l"
-  "/home/niyas/aurora2018/devel/share/roseus/ros/rover_msgs/manifest.l"
+  "/home/achu/aurora2018/devel/share/roseus/ros/rover_msgs/msg/WheelVelocity.l"
+  "/home/achu/aurora2018/devel/share/roseus/ros/rover_msgs/msg/enc.l"
+  "/home/achu/aurora2018/devel/share/roseus/ros/rover_msgs/manifest.l"
 )
 
 # Per-language clean rules from dependency scanning.

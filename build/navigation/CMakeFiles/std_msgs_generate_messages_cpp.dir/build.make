@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/niyas/aurora2018/src
+CMAKE_SOURCE_DIR = /home/achu/aurora2018/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/niyas/aurora2018/build
+CMAKE_BINARY_DIR = /home/achu/aurora2018/build
 
 # Utility rule file for std_msgs_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/build: std_msgs_generat
 .PHONY : navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 
 navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	cd /home/niyas/aurora2018/build/navigation && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/achu/aurora2018/build/navigation && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend:
-	cd /home/niyas/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/niyas/aurora2018/src /home/niyas/aurora2018/src/navigation /home/niyas/aurora2018/build /home/niyas/aurora2018/build/navigation /home/niyas/aurora2018/build/navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/achu/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/achu/aurora2018/src /home/achu/aurora2018/src/navigation /home/achu/aurora2018/build /home/achu/aurora2018/build/navigation /home/achu/aurora2018/build/navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
 

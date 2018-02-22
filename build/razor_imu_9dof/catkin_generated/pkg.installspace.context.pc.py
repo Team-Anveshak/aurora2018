@@ -1,8 +1,8 @@
 # generated from catkin/cmake/template/pkg.context.pc.in
 CATKIN_PACKAGE_PREFIX = ""
-PROJECT_PKG_CONFIG_INCLUDE_DIRS = "/home/niyas/aurora2018/install/include".split(';') if "/home/niyas/aurora2018/install/include" != "" else []
+PROJECT_PKG_CONFIG_INCLUDE_DIRS = "/home/achu/aurora2018/install/include".split(';') if "/home/achu/aurora2018/install/include" != "" else []
 PROJECT_CATKIN_DEPENDS = "dynamic_reconfigure".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "razor_imu_9dof"
-PROJECT_SPACE_DIR = "/home/niyas/aurora2018/install"
+PROJECT_SPACE_DIR = "/home/achu/aurora2018/install"
 PROJECT_VERSION = "1.1.1"

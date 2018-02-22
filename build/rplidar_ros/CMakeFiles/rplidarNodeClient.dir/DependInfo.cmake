@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/niyas/aurora2018/src/rplidar_ros/src/client.cpp" "/home/niyas/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o"
+  "/home/achu/aurora2018/src/rplidar_ros/src/client.cpp" "/home/achu/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,8 +17,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/niyas/aurora2018/src/rplidar_ros/./sdk/include"
-  "/home/niyas/aurora2018/src/rplidar_ros/./sdk/src"
+  "/home/achu/aurora2018/src/rplidar_ros/./sdk/include"
+  "/home/achu/aurora2018/src/rplidar_ros/./sdk/src"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/niyas/aurora2018/src
+CMAKE_SOURCE_DIR = /home/achu/aurora2018/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/niyas/aurora2018/build
+CMAKE_BINARY_DIR = /home/achu/aurora2018/build
 
 # Utility rule file for diagnostic_msgs_generate_messages_eus.
 
@@ -63,10 +63,10 @@ man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build: diagnostic_
 .PHONY : man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
 
 man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/clean:
-	cd /home/niyas/aurora2018/build/man_ctrl && $(CMAKE_COMMAND) -P CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/cmake_clean.cmake
+	cd /home/achu/aurora2018/build/man_ctrl && $(CMAKE_COMMAND) -P CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/cmake_clean.cmake
 .PHONY : man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/clean
 
 man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/depend:
-	cd /home/niyas/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/niyas/aurora2018/src /home/niyas/aurora2018/src/man_ctrl /home/niyas/aurora2018/build /home/niyas/aurora2018/build/man_ctrl /home/niyas/aurora2018/build/man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/achu/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/achu/aurora2018/src /home/achu/aurora2018/src/man_ctrl /home/achu/aurora2018/build /home/achu/aurora2018/build/man_ctrl /home/achu/aurora2018/build/man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : man_ctrl/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/depend
 

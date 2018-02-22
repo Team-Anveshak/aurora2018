@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rover_msgs_generate_messages_py"
-  "/home/niyas/aurora2018/devel/lib/python2.7/dist-packages/rover_msgs/msg/_WheelVelocity.py"
-  "/home/niyas/aurora2018/devel/lib/python2.7/dist-packages/rover_msgs/msg/_enc.py"
-  "/home/niyas/aurora2018/devel/lib/python2.7/dist-packages/rover_msgs/msg/__init__.py"
+  "/home/achu/aurora2018/devel/lib/python2.7/dist-packages/rover_msgs/msg/_WheelVelocity.py"
+  "/home/achu/aurora2018/devel/lib/python2.7/dist-packages/rover_msgs/msg/_enc.py"
+  "/home/achu/aurora2018/devel/lib/python2.7/dist-packages/rover_msgs/msg/__init__.py"
 )
 
 # Per-language clean rules from dependency scanning.

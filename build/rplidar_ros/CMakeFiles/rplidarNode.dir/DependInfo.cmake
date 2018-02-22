@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/niyas/aurora2018/src/rplidar_ros/sdk/src/arch/linux/net_serial.cpp" "/home/niyas/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/arch/linux/net_serial.cpp.o"
-  "/home/niyas/aurora2018/src/rplidar_ros/sdk/src/arch/linux/timer.cpp" "/home/niyas/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/arch/linux/timer.cpp.o"
-  "/home/niyas/aurora2018/src/rplidar_ros/sdk/src/hal/thread.cpp" "/home/niyas/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/hal/thread.cpp.o"
-  "/home/niyas/aurora2018/src/rplidar_ros/sdk/src/rplidar_driver.cpp" "/home/niyas/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/rplidar_driver.cpp.o"
-  "/home/niyas/aurora2018/src/rplidar_ros/src/node.cpp" "/home/niyas/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/src/node.cpp.o"
+  "/home/achu/aurora2018/src/rplidar_ros/sdk/src/arch/linux/net_serial.cpp" "/home/achu/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/arch/linux/net_serial.cpp.o"
+  "/home/achu/aurora2018/src/rplidar_ros/sdk/src/arch/linux/timer.cpp" "/home/achu/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/arch/linux/timer.cpp.o"
+  "/home/achu/aurora2018/src/rplidar_ros/sdk/src/hal/thread.cpp" "/home/achu/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/hal/thread.cpp.o"
+  "/home/achu/aurora2018/src/rplidar_ros/sdk/src/rplidar_driver.cpp" "/home/achu/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/sdk/src/rplidar_driver.cpp.o"
+  "/home/achu/aurora2018/src/rplidar_ros/src/node.cpp" "/home/achu/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNode.dir/src/node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -21,8 +21,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/niyas/aurora2018/src/rplidar_ros/./sdk/include"
-  "/home/niyas/aurora2018/src/rplidar_ros/./sdk/src"
+  "/home/achu/aurora2018/src/rplidar_ros/./sdk/include"
+  "/home/achu/aurora2018/src/rplidar_ros/./sdk/src"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

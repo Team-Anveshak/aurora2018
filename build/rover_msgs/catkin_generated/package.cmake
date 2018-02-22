@@ -10,7 +10,4 @@ set(rover_msgs_EXEC_DEPENDS "std_msgs" "nav_msgs" "geometry_msgs" "message_runti
 set(rover_msgs_RUN_DEPENDS "std_msgs" "nav_msgs" "geometry_msgs" "message_runtime")
 set(rover_msgs_TEST_DEPENDS )
 set(rover_msgs_DOC_DEPENDS )
-set(rover_msgs_URL_WEBSITE "")
-set(rover_msgs_URL_BUGTRACKER "")
-set(rover_msgs_URL_REPOSITORY "")
 set(rover_msgs_DEPRECATED "")

@@ -21,34 +21,18 @@
 #define rdir 27
 #define rpwm 7
 
-#define lpotPin A6
-#define rpotPin A7
+#define lpotPin A8
+#define rpotPin A9
 
 int rot = 0,orot = 0;
 int tl = 0,tr = 0, bl = 0, br = 0;
 float lt = 0,rt = 0,lb = 0,rb = 0;
 float lpot = 0,rpot = 0,set = 0; 
+int set_r, set_l;
+int state=0;
+int vel_state;
+   
 
-const int freq1 = 21000000;
-const int freq2 = 21000000;
-const int minfreq1 = 641;
-
-void SetPinFrequency(int pin,int frequency,int clock,int duty)
-{
-    //Configure Pin
-  PIO_Configure(g_APinDescription[pin].pPort,
-  g_APinDescription[pin].ulPinType,
-  g_APinDescription[pin].ulPin,
-  g_APinDescription[pin].ulPinConfiguration);
-  //Set Pin to count off CLKA set at freq1
-  int chan = g_APinDescription[pin].ulPWMChannel;
-  int clk = clock == 1 ? PWM_CMR_CPRE_CLKA : PWM_CMR_CPRE_CLKB;
-  PWMC_ConfigureChannel(PWM_INTERFACE,chan,clk,0,0);
-  int divider = 42000000/frequency;
-  PWMC_SetPeriod(PWM_INTERFACE,chan,divider);
-  PWMC_SetDutyCycle(PWM_INTERFACE,chan,duty);
-  PWMC_EnableChannel(PWM_INTERFACE,chan);
-}
 
 
 ros::NodeHandle nh;
@@ -61,27 +45,28 @@ void loco(int vel,int dir_pin,int pwm_pin,int slp_pin)
   if(vel<=0)
     {
      //digitalWrite(slp_pin,HIGH);
-     digitalWrite(dir_pin,LOW);
-     SetPinFrequency(pwm_pin,54000,1,abs(vel));
-     
+        digitalWrite(dir_pin,LOW);
+        analogWrite(pwm_pin,abs(vel));
     }
+      
+     
   else
     { 
       //digitalWrite(slp_pin,HIGH);
-      digitalWrite(dir_pin,HIGH);
-      SetPinFrequency(pwm_pin,54000,1,abs(vel));
+      digitalWrite(dir_pin,HIGH); 
+      analogWrite(pwm_pin,abs(vel));
     }
 }
 
-void rotate(int set)
+void rotate(int set_r,int set_l)
 {
-  while(abs(lpot-set)>5 || abs(rpot-set)>5){
-    if(abs(lpot-set)>5){
-      if((lpot-set)<5){
+    if(abs(lpot-set_l)>20){
+       state=0;
+      if((lpot-set_l)<0){
         digitalWrite(ldir,HIGH);
         analogWrite(lpwm,100);
       }
-      else if((lpot-set)>5){
+      else if((lpot-set_l)>0){
         digitalWrite(ldir,LOW);
         analogWrite(lpwm,100);
       }
@@ -90,12 +75,16 @@ void rotate(int set)
       digitalWrite(ldir,LOW);
       analogWrite(lpwm,0);
     }
-    if(abs(rpot-set)>5){
-      if((rpot-set)<5){
+
+   
+    if(abs(rpot-set_r)>20){
+      state=0;
+      
+      if((rpot-set_r)<0){
         digitalWrite(rdir,HIGH);
         analogWrite(rpwm,100);
       }
-      else if((rpot-set)>5){
+      else if((rpot-set_r)>0){
         digitalWrite(rdir,LOW);
         analogWrite(rpwm,100);
       }
@@ -104,16 +93,21 @@ void rotate(int set)
       digitalWrite(rdir,LOW);
       analogWrite(rpwm,0);
     }
-    lpot = analogRead(lpotPin);
+    if(abs(lpot-set_l)<20 && abs(lpot-set_l)<20)
+    {
+      state=1;
+    }
     rpot = analogRead(rpotPin);
-  }
+    lpot = analogRead(lpotPin);
 }
 
+
+
 void roverMotionCallback(const rover_msgs::WheelVelocity& RoverVelocity){
-  lt = map(RoverVelocity.left_front_vel,-70,70,-175,175);
-  rt = map(RoverVelocity.right_front_vel,-70,70,-175,175);
-  lb = map(RoverVelocity.left_back_vel,-70,70,-175,175);
-  rb = map(RoverVelocity.right_back_vel,-70,70,-175,175);
+  lt = map(RoverVelocity.left_front_vel,-70,70,-150,150);
+  rt = map(RoverVelocity.right_front_vel,-70,70,-150,150);
+  lb = map(RoverVelocity.left_back_vel,-70,70,-150,150);
+  rb = map(RoverVelocity.right_back_vel,-70,70,-150,150);
   rot = RoverVelocity.rot ;
  }
  
@@ -135,6 +129,11 @@ void setup(){
   
   pinMode(lpotPin, INPUT);
   pinMode(rpotPin, INPUT);
+
+  digitalWrite(slp1,HIGH);
+  digitalWrite(slp2,HIGH);
+  digitalWrite(slp3,HIGH);
+  digitalWrite(slp4,HIGH);
   
   nh.advertise(vel_pub);
  
@@ -143,41 +142,56 @@ void setup(){
 void loop(){
   nh.spinOnce();
   
-  tl = (int)lt;///k1*mink;
-  tr = (int)rt;///k1*mink;
-  bl = (int)lb;///k3*mink;
-  br = (int)rb;///k3*mink;
+  tl = (int)lt;
+  tr = (int)rt;
+  bl = (int)lb;
+  br = (int)rb;
   
-  if(rot == orot){
-  digitalWrite(slp1,HIGH);
-  digitalWrite(slp2,HIGH);
-  digitalWrite(slp3,HIGH);
-  digitalWrite(slp4,HIGH);
+//  if(/*state==1*/1){  umcomment this when the linac pot are connected to the pcb
+
+rpot = analogRead(rpotPin);
+lpot = analogRead(lpotPin);
+
   loco(tl,dir1,pwm1,slp1);
   loco(tr,dir2,pwm2,slp2);
   loco(bl,dir3,pwm3,slp3);
   loco(br,dir4,pwm4,slp4);
-  }
-  else if(rot == 0){
-    set = 500 ;
-    rotate(set);
-  }
-  else if(rot == -1){
-    set = 200 ;
-    rotate(set);    
-  }
-  else if(rot == 1){
-    set = 800 ;
-    rotate(set);
-  }
-  
-  RoverVel.left_front_vel=tl;
-  RoverVel.right_front_vel=tr;
+  RoverVel.left_front_vel=rpot;
+  RoverVel.right_front_vel=lpot;
   RoverVel.left_back_vel=bl;
   RoverVel.right_back_vel=br;
-  //RoverVel.rot = rot;
-  RoverVel.rot = lpot;
-  orot = rot;
+//  }
+//  else{
+//  loco(0,dir1,pwm1,slp1);    umcomment these also when the linac pot are connected to the pcb
+//  loco(0,dir2,pwm2,slp2);
+//  loco(0,dir3,pwm3,slp3);
+//  loco(0,dir4,pwm4,slp4);
+//    RoverVel.right_back_vel=0;
+//  }
+//  
+  if(rot == 0){
+    set_r = 500 ;
+    set_l = 500 ;
+    rotate(set_r,set_l);
+    
+  }
+  else if(rot == -1){
+  
+    set_r = 200 ;
+    set_l = 200 ;
+    rotate(set_r,set_l);
+  }
+  else if(rot == 1){
+    
+    set_r = 800 ;
+    set_l = 800 ;
+    rotate(set_r,set_l);
+  }
+  
+  
+
+  RoverVel.rot = rot;
+
   
   vel_pub.publish(&RoverVel);
   

@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/niyas/aurora2018/src
-# Build directory: /home/niyas/aurora2018/build
+# Source directory: /home/achu/aurora2018/src
+# Build directory: /home/achu/aurora2018/build
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
