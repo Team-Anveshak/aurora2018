@@ -1,8 +1,0 @@
-prefix=/home/achu/aurora2018/devel
-
-Name: razor_imu_9dof
-Description: Description of razor_imu_9dof
-Version: 1.1.1
-Cflags: -I/home/achu/aurora2018/devel/include
-Libs: -L/home/achu/aurora2018/devel/lib 
-Requires: dynamic_reconfigure

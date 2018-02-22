@@ -1,8 +1,0 @@
-prefix=/home/achu/aurora2018/devel
-
-Name: rover_msgs
-Description: Description of rover_msgs
-Version: 0.0.0
-Cflags: -I/home/achu/aurora2018/devel/include
-Libs: -L/home/achu/aurora2018/devel/lib 
-Requires: 
