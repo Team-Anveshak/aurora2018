@@ -204,3 +204,8 @@ add_executable(drive src/drive.cpp)
 target_link_libraries(drive ${catkin_LIBRARIES})
 add_dependencies(drive ${catkin_EXPORTED_TARGETS})
 
+add_executable(drive_diff src/drive_diff.cpp)
+target_link_libraries(drive_diff ${catkin_LIBRARIES})
+add_dependencies(drive_diff ${catkin_EXPORTED_TARGETS})
+
+
