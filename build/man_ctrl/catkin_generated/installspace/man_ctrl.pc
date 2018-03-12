@@ -1,8 +1,0 @@
-prefix=/home/achu/Pictures/aurora2018/install
-
-Name: man_ctrl
-Description: Description of man_ctrl
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/achu/Pictures/aurora2018/install/lib 
-Requires: 
