@@ -55,8 +55,9 @@ class GPS() :
 		dist = 6371 * c*1000
 
 		bearing = atan2(sin(lon2-lon1)*cos(lat2), (cos(lat1)*sin(lat2))-(sin(lat1)*cos(lat2)*cos(lon2-lon1)))
-		bearing = degrees(bearing)
-		bearing = (bearing + 360) % 360
+		bearing = -degrees(bearing)
+		if (bearing<0):
+			bearing = bearing+180
 		bearing = radians(bearing)
 
 
@@ -90,8 +91,8 @@ class GPS() :
 		print "y"
 		print dist*sin(bearing) + self.current_y
 
-		if self.status == 0 :
-			self.client.send_goal(goal)
+
+		self.client.send_goal(goal)
 
 
 
