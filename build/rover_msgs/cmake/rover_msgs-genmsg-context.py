@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg;/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
+messages_str = "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg;/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg;/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg;/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg"
 services_str = ""
 pkg_name = "rover_msgs"
 dependencies_str = "std_msgs;geometry_msgs;sensor_msgs"

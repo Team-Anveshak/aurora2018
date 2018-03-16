@@ -67,17 +67,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -133,6 +122,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/achu/aurora2018/aurora2018/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/achu/aurora2018/aurora2018/build/CMakeFiles /home/achu/aurora2018/aurora2018/build/rover_msgs/CMakeFiles/progress.marks
@@ -181,79 +181,19 @@ rover_msgs_generate_messages_py/fast:
 .PHONY : rover_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule
-.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule
+rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Goal.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Goal.dir/rule
+.PHONY : rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Goal.dir/rule
 
 # Convenience name for target.
-rover_msgs_generate_messages_cpp: rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule
+_rover_msgs_generate_messages_check_deps_Goal: rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Goal.dir/rule
 
-.PHONY : rover_msgs_generate_messages_cpp
+.PHONY : _rover_msgs_generate_messages_check_deps_Goal
 
 # fast build rule for target.
-rover_msgs_generate_messages_cpp/fast:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/build
-.PHONY : rover_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule
-.PHONY : rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule
-
-# Convenience name for target.
-_rover_msgs_generate_messages_check_deps_WheelVelocity: rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule
-
-.PHONY : _rover_msgs_generate_messages_check_deps_WheelVelocity
-
-# fast build rule for target.
-_rover_msgs_generate_messages_check_deps_WheelVelocity/fast:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/build.make rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/build
-.PHONY : _rover_msgs_generate_messages_check_deps_WheelVelocity/fast
-
-# Convenience name for target.
-rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule
-.PHONY : rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule
-
-# Convenience name for target.
-rover_msgs_gencpp: rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule
-
-.PHONY : rover_msgs_gencpp
-
-# fast build rule for target.
-rover_msgs_gencpp/fast:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/build.make rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/build
-.PHONY : rover_msgs_gencpp/fast
-
-# Convenience name for target.
-rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule
-.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rover_msgs_generate_messages_lisp: rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rover_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rover_msgs_generate_messages_lisp/fast:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/build
-.PHONY : rover_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule
-.PHONY : rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule
-
-# Convenience name for target.
-_rover_msgs_generate_messages_check_deps_enc: rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule
-
-.PHONY : _rover_msgs_generate_messages_check_deps_enc
-
-# fast build rule for target.
-_rover_msgs_generate_messages_check_deps_enc/fast:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/build.make rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/build
-.PHONY : _rover_msgs_generate_messages_check_deps_enc/fast
+_rover_msgs_generate_messages_check_deps_Goal/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Goal.dir/build.make rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Goal.dir/build
+.PHONY : _rover_msgs_generate_messages_check_deps_Goal/fast
 
 # Convenience name for target.
 rover_msgs/CMakeFiles/rover_msgs_genpy.dir/rule:
@@ -316,19 +256,94 @@ rover_msgs_geneus/fast:
 .PHONY : rover_msgs_geneus/fast
 
 # Convenience name for target.
-rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule
-.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule
+rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule
+.PHONY : rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule
 
 # Convenience name for target.
-rover_msgs_generate_messages: rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule
+_rover_msgs_generate_messages_check_deps_WheelVelocity: rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/rule
 
-.PHONY : rover_msgs_generate_messages
+.PHONY : _rover_msgs_generate_messages_check_deps_WheelVelocity
 
 # fast build rule for target.
-rover_msgs_generate_messages/fast:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/build
-.PHONY : rover_msgs_generate_messages/fast
+_rover_msgs_generate_messages_check_deps_WheelVelocity/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/build.make rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_WheelVelocity.dir/build
+.PHONY : _rover_msgs_generate_messages_check_deps_WheelVelocity/fast
+
+# Convenience name for target.
+rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule
+.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rover_msgs_generate_messages_cpp: rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : rover_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rover_msgs_generate_messages_cpp/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages_cpp.dir/build
+.PHONY : rover_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule
+.PHONY : rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule
+
+# Convenience name for target.
+rover_msgs_gencpp: rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/rule
+
+.PHONY : rover_msgs_gencpp
+
+# fast build rule for target.
+rover_msgs_gencpp/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/build.make rover_msgs/CMakeFiles/rover_msgs_gencpp.dir/build
+.PHONY : rover_msgs_gencpp/fast
+
+# Convenience name for target.
+rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule
+.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+rover_msgs_generate_messages_lisp: rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : rover_msgs_generate_messages_lisp
+
+# fast build rule for target.
+rover_msgs_generate_messages_lisp/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages_lisp.dir/build
+.PHONY : rover_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule
+.PHONY : rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule
+
+# Convenience name for target.
+_rover_msgs_generate_messages_check_deps_enc: rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/rule
+
+.PHONY : _rover_msgs_generate_messages_check_deps_enc
+
+# fast build rule for target.
+_rover_msgs_generate_messages_check_deps_enc/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/build.make rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_enc.dir/build
+.PHONY : _rover_msgs_generate_messages_check_deps_enc/fast
+
+# Convenience name for target.
+rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule
+.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+rover_msgs_generate_messages_nodejs: rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : rover_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+rover_msgs_generate_messages_nodejs/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/build
+.PHONY : rover_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 rover_msgs/CMakeFiles/rover_msgs_genlisp.dir/rule:
@@ -346,19 +361,34 @@ rover_msgs_genlisp/fast:
 .PHONY : rover_msgs_genlisp/fast
 
 # Convenience name for target.
-rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule
-.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule
+rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule
+.PHONY : rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule
 
 # Convenience name for target.
-rover_msgs_generate_messages_nodejs: rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/rule
+rover_msgs_generate_messages: rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/rule
 
-.PHONY : rover_msgs_generate_messages_nodejs
+.PHONY : rover_msgs_generate_messages
 
 # fast build rule for target.
-rover_msgs_generate_messages_nodejs/fast:
-	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages_nodejs.dir/build
-.PHONY : rover_msgs_generate_messages_nodejs/fast
+rover_msgs_generate_messages/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/build.make rover_msgs/CMakeFiles/rover_msgs_generate_messages.dir/build
+.PHONY : rover_msgs_generate_messages/fast
+
+# Convenience name for target.
+rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Imu.dir/rule:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f CMakeFiles/Makefile2 rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Imu.dir/rule
+.PHONY : rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Imu.dir/rule
+
+# Convenience name for target.
+_rover_msgs_generate_messages_check_deps_Imu: rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Imu.dir/rule
+
+.PHONY : _rover_msgs_generate_messages_check_deps_Imu
+
+# fast build rule for target.
+_rover_msgs_generate_messages_check_deps_Imu/fast:
+	cd /home/achu/aurora2018/aurora2018/build && $(MAKE) -f rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Imu.dir/build.make rover_msgs/CMakeFiles/_rover_msgs_generate_messages_check_deps_Imu.dir/build
+.PHONY : _rover_msgs_generate_messages_check_deps_Imu/fast
 
 # Help Target
 help:
@@ -367,25 +397,27 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... install/local"
 	@echo "... rover_msgs_generate_messages_py"
-	@echo "... rover_msgs_generate_messages_cpp"
+	@echo "... _rover_msgs_generate_messages_check_deps_Goal"
+	@echo "... rover_msgs_genpy"
+	@echo "... rover_msgs_generate_messages_eus"
+	@echo "... rover_msgs_gennodejs"
+	@echo "... rover_msgs_geneus"
 	@echo "... list_install_components"
 	@echo "... install/strip"
 	@echo "... _rover_msgs_generate_messages_check_deps_WheelVelocity"
+	@echo "... rover_msgs_generate_messages_cpp"
 	@echo "... install"
 	@echo "... rover_msgs_gencpp"
 	@echo "... edit_cache"
 	@echo "... rover_msgs_generate_messages_lisp"
 	@echo "... _rover_msgs_generate_messages_check_deps_enc"
-	@echo "... rover_msgs_genpy"
-	@echo "... rover_msgs_generate_messages_eus"
-	@echo "... rover_msgs_gennodejs"
-	@echo "... rover_msgs_geneus"
-	@echo "... rover_msgs_generate_messages"
-	@echo "... rover_msgs_genlisp"
 	@echo "... rover_msgs_generate_messages_nodejs"
+	@echo "... rover_msgs_genlisp"
+	@echo "... rover_msgs_generate_messages"
+	@echo "... test"
+	@echo "... _rover_msgs_generate_messages_check_deps_Imu"
 .PHONY : help
 
 

@@ -10,7 +10,7 @@ from tf.broadcaster import TransformBroadcaster
 from math import *
 
 
-  
+
 
 
 dx=0
@@ -41,7 +41,7 @@ def main():
 		then=now
 		elapsed = elapsed.to_sec()
 
-		
+
 
 		d = d + dx*elapsed
 		theta = theta+( dw*elapsed)
@@ -72,15 +72,15 @@ def main():
 		odomPub.publish(odom)
 
 		r = rospy.Rate(10)
-		
+
 		rospy.loginfo("x= %s " % Gx)
 		rospy.loginfo("y= %s " % Gy)
 		rospy.loginfo("theta %s " % theta)
 		r.sleep()
-		
 
 
-		
+
+
 
 
 
@@ -99,8 +99,5 @@ def Odomcallback(msg):
 if __name__ == '__main__':
 	rospy.init_node("fake_odom")
 
-	
+
 	main()
-
-
-

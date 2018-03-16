@@ -2,6 +2,6 @@ float64 left_front_vel
 float64 right_front_vel
 float64 left_back_vel
 float64 right_back_vel
-float64 rot
-float64 rots
+int16 rot
+int16 rots
 

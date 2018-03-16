@@ -36,6 +36,8 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rover_msgs/msg" TYPE FILE FILES
     "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg"
     "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
+    "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg"
+    "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg"
     )
 endif()
 

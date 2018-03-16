@@ -52,6 +52,8 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    enc.msg
    WheelVelocity.msg
+   Imu.msg
+   Goal.msg
  )
 
 ## Generate services in the 'srv' folder
