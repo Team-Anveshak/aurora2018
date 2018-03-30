@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "rplidar_ros"
-PROJECT_SPACE_DIR = "/home/achu/aurora2018/aurora2018/install"
+PROJECT_SPACE_DIR = "/home/niyas/git-repos/aurora2018/install"
 PROJECT_VERSION = "1.5.7"

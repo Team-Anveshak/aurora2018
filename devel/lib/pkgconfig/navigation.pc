@@ -1,8 +1,8 @@
-prefix=/home/achu/aurora2018/aurora2018/devel
+prefix=/home/niyas/git-repos/aurora2018/devel
 
 Name: navigation
 Description: Description of navigation
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/achu/aurora2018/aurora2018/devel/lib 
+Libs: -L/home/niyas/git-repos/aurora2018/devel/lib 
 Requires: 

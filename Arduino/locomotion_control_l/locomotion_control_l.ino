@@ -1,5 +1,5 @@
 /* rosserial Subscriber For Locomotion Control*/
-#define USE_USBCON
+/*#define USE_USBCON*/
 #include <ros.h>
 #include <rover_msgs/WheelVelocity.h>
 
@@ -10,7 +10,7 @@
 #define pwm2 3
 #define slp2 37
 #define dir3 39
-#define pwm3 4
+#define pwm3 10
 #define slp3 41
 #define dir4 43
 #define pwm4 5
@@ -60,6 +60,7 @@ void loco(int vel,int dir_pin,int pwm_pin,int slp_pin)
 
 void rotate(int set_r,int set_l)
 {
+  
     if(abs(lpot-set_l)>20){
        state=0;
       if((lpot-set_l)<0){
@@ -116,6 +117,9 @@ void roverMotionCallback(const rover_msgs::WheelVelocity& RoverVelocity){
 void setup(){
   nh.initNode();
   nh.subscribe(locomotion_sub);
+
+  TCCR3B = TCCR3B & B11111000 | B00000001;    // set timer 3 divisor to     1 for PWM frequency of 31372.55 Hz  
+  TCCR2B = TCCR2B & B11111000 | B00000001;    // set timer 2 divisor to     1 for PWM frequency of 31372.55 Hz
   
   pinMode(dir1,OUTPUT);
   pinMode(dir2,OUTPUT);
@@ -172,6 +176,10 @@ lpot = analogRead(lpotPin);
   if(rot == 0){
     set_r = 500 ;
     set_l = 500 ;
+    loco(tl,dir1,0,slp1);
+    loco(tr,dir2,0,slp2);
+    loco(bl,dir3,0,slp3);
+    loco(br,dir4,0,slp4);
     rotate(set_r,set_l);
     
   }
@@ -179,6 +187,7 @@ lpot = analogRead(lpotPin);
   
     set_r = 200 ;
     set_l = 200 ;
+    
     rotate(set_r,set_l);
   }
   else if(rot == 1){

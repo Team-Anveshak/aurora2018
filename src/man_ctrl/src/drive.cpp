@@ -6,6 +6,8 @@
 
 float x_axis_val;
 float y_axis_val;
+float x1_axis_val;
+float y1_axis_val;
 int c2,rot,rot2;
 
 
@@ -16,14 +18,11 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     
     x_axis_val = joy->axes[0];
     y_axis_val = joy->axes[1];
-  if(joy->buttons[3]==1) rot = 1;
+    x1_axis_val = joy->axes[2];
+    y1_axis_val = joy->axes[3];
+  if(joy->buttons[3]==1) rot = 0;
  else if(joy->buttons[0]==1) rot =-1;
- else rot=0;
- if(joy->buttons[2]==1) rot2 = 1;
- else if(joy->buttons[2]==1) rot2 =-1;
- else rot2 =0;
- 
-   
+ else if(joy->buttons[2]==1) rot =1;   
    
    
     
@@ -59,11 +58,6 @@ while(ros::ok())
         vel.right_front_vel = -c2 * y_axis_val*70; 
         vel.left_back_vel   = c2 * y_axis_val*70;
         vel.right_back_vel  = c2 * y_axis_val*70;
-        twist.linear.x      =  y_axis_val;
-	twist.angular.z     =   0;
-     
-
-
         
 	}
 
@@ -75,43 +69,37 @@ while(ros::ok())
         vel.right_front_vel= -c2 * y_axis_val*70;
         vel.left_back_vel  = c2 * y_axis_val*70;
         vel.right_back_vel = c2 * y_axis_val*70;
-       twist.linear.x      =  y_axis_val;
-	twist.angular.z     =   0;
 
 	}
 	
 	
-	else if ((x_axis_val>0.25) && (fabs(x_axis_val)>fabs(y_axis_val)))
+	else if ((y1_axis_val>0.25) && (fabs(y1_axis_val)>fabs(x1_axis_val)))
 	{
-		vel.left_front_vel = -c2 * x_axis_val*70;
-        vel.right_front_vel= c2 * x_axis_val*70;
-        vel.left_back_vel  = -c2 * x_axis_val*70;
-        vel.right_back_vel = c2 * x_axis_val*70;
-
-        twist.linear.x      =  0;
-	twist.angular.z     =   x_axis_val;
-	}
-
-	else if ((x_axis_val < (-0.25)) && (fabs(x_axis_val)>fabs(y_axis_val)))
-	{
-	   vel.left_front_vel = -c2 * x_axis_val*70;
-       vel.right_front_vel= c2 * x_axis_val*70;
-       vel.left_back_vel  = c2 * x_axis_val*70;
-       vel.right_back_vel = -c2 * x_axis_val*70;
-
-       twist.linear.x      =  0;
-	twist.angular.z     =   x_axis_val;
-
+	vel.left_front_vel  = -c2 * y1_axis_val*70;
+        vel.right_front_vel = -c2 * y1_axis_val*70; 
+        vel.left_back_vel   = -c2 * y1_axis_val*70;
+        vel.right_back_vel  = -c2 * y1_axis_val*70;
         
 	}
 
+	
+	else if ((y1_axis_val< (-0.25)) && (fabs(y1_axis_val)>fabs(x1_axis_val)))
+	{
+		
+	vel.left_front_vel = -c2 * y1_axis_val*70;
+        vel.right_front_vel= -c2 * y1_axis_val*70;
+        vel.left_back_vel  = -c2 * y1_axis_val*70;
+        vel.right_back_vel = -c2 * y1_axis_val*70;
+
+	}
+	
 	else 
-    {
+	{
         vel.left_front_vel = 0;
         vel.right_front_vel =  0;
         vel.left_back_vel =  0;
         vel.right_back_vel =  0;
-    }
+        }
 	
 	vel.rot = rot;
 	vel.rots =rot2;

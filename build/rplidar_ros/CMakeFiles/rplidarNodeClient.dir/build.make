@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/achu/aurora2018/aurora2018/src
+CMAKE_SOURCE_DIR = /home/niyas/git-repos/aurora2018/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/achu/aurora2018/aurora2018/build
+CMAKE_BINARY_DIR = /home/niyas/git-repos/aurora2018/build
 
 # Include any dependencies generated for this target.
 include rplidar_ros/CMakeFiles/rplidarNodeClient.dir/depend.make
@@ -58,17 +58,17 @@ include rplidar_ros/CMakeFiles/rplidarNodeClient.dir/progress.make
 include rplidar_ros/CMakeFiles/rplidarNodeClient.dir/flags.make
 
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/flags.make
-rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o: /home/achu/aurora2018/aurora2018/src/rplidar_ros/src/client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/achu/aurora2018/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o"
-	cd /home/achu/aurora2018/aurora2018/build/rplidar_ros && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o -c /home/achu/aurora2018/aurora2018/src/rplidar_ros/src/client.cpp
+rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o: /home/niyas/git-repos/aurora2018/src/rplidar_ros/src/client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/niyas/git-repos/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o"
+	cd /home/niyas/git-repos/aurora2018/build/rplidar_ros && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o -c /home/niyas/git-repos/aurora2018/src/rplidar_ros/src/client.cpp
 
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rplidarNodeClient.dir/src/client.cpp.i"
-	cd /home/achu/aurora2018/aurora2018/build/rplidar_ros && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/achu/aurora2018/aurora2018/src/rplidar_ros/src/client.cpp > CMakeFiles/rplidarNodeClient.dir/src/client.cpp.i
+	cd /home/niyas/git-repos/aurora2018/build/rplidar_ros && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/niyas/git-repos/aurora2018/src/rplidar_ros/src/client.cpp > CMakeFiles/rplidarNodeClient.dir/src/client.cpp.i
 
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rplidarNodeClient.dir/src/client.cpp.s"
-	cd /home/achu/aurora2018/aurora2018/build/rplidar_ros && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/achu/aurora2018/aurora2018/src/rplidar_ros/src/client.cpp -o CMakeFiles/rplidarNodeClient.dir/src/client.cpp.s
+	cd /home/niyas/git-repos/aurora2018/build/rplidar_ros && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/niyas/git-repos/aurora2018/src/rplidar_ros/src/client.cpp -o CMakeFiles/rplidarNodeClient.dir/src/client.cpp.s
 
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o.requires:
 
@@ -88,33 +88,33 @@ rplidarNodeClient_OBJECTS = \
 # External object files for target rplidarNodeClient
 rplidarNodeClient_EXTERNAL_OBJECTS =
 
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build.make
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libroscpp.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librosconsole.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librostime.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libcpp_common.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/achu/aurora2018/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient"
-	cd /home/achu/aurora2018/aurora2018/build/rplidar_ros && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rplidarNodeClient.dir/link.txt --verbose=$(VERBOSE)
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/src/client.cpp.o
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build.make
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libroscpp.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librosconsole.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/librostime.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /opt/ros/kinetic/lib/libcpp_common.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient: rplidar_ros/CMakeFiles/rplidarNodeClient.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/niyas/git-repos/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient"
+	cd /home/niyas/git-repos/aurora2018/build/rplidar_ros && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rplidarNodeClient.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build: /home/achu/aurora2018/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient
+rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build: /home/niyas/git-repos/aurora2018/devel/lib/rplidar_ros/rplidarNodeClient
 
 .PHONY : rplidar_ros/CMakeFiles/rplidarNodeClient.dir/build
 
@@ -123,10 +123,10 @@ rplidar_ros/CMakeFiles/rplidarNodeClient.dir/requires: rplidar_ros/CMakeFiles/rp
 .PHONY : rplidar_ros/CMakeFiles/rplidarNodeClient.dir/requires
 
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/clean:
-	cd /home/achu/aurora2018/aurora2018/build/rplidar_ros && $(CMAKE_COMMAND) -P CMakeFiles/rplidarNodeClient.dir/cmake_clean.cmake
+	cd /home/niyas/git-repos/aurora2018/build/rplidar_ros && $(CMAKE_COMMAND) -P CMakeFiles/rplidarNodeClient.dir/cmake_clean.cmake
 .PHONY : rplidar_ros/CMakeFiles/rplidarNodeClient.dir/clean
 
 rplidar_ros/CMakeFiles/rplidarNodeClient.dir/depend:
-	cd /home/achu/aurora2018/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/achu/aurora2018/aurora2018/src /home/achu/aurora2018/aurora2018/src/rplidar_ros /home/achu/aurora2018/aurora2018/build /home/achu/aurora2018/aurora2018/build/rplidar_ros /home/achu/aurora2018/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNodeClient.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/niyas/git-repos/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/niyas/git-repos/aurora2018/src /home/niyas/git-repos/aurora2018/src/rplidar_ros /home/niyas/git-repos/aurora2018/build /home/niyas/git-repos/aurora2018/build/rplidar_ros /home/niyas/git-repos/aurora2018/build/rplidar_ros/CMakeFiles/rplidarNodeClient.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rplidar_ros/CMakeFiles/rplidarNodeClient.dir/depend
 

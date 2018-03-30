@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/drive_diff.dir/src/drive_diff.cpp.o"
-  "/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive_diff.pdb"
-  "/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive_diff"
+  "/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive_diff.pdb"
+  "/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive_diff"
 )
 
 # Per-language clean rules from dependency scanning.

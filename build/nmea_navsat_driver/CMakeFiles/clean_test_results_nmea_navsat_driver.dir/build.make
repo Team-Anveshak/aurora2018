@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/achu/aurora2018/aurora2018/src
+CMAKE_SOURCE_DIR = /home/niyas/git-repos/aurora2018/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/achu/aurora2018/aurora2018/build
+CMAKE_BINARY_DIR = /home/niyas/git-repos/aurora2018/build
 
 # Utility rule file for clean_test_results_nmea_navsat_driver.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/achu/aurora2018/aurora2018/build
 include nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/progress.make
 
 nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver:
-	cd /home/achu/aurora2018/aurora2018/build/nmea_navsat_driver && /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/remove_test_results.py /home/achu/aurora2018/aurora2018/build/test_results/nmea_navsat_driver
+	cd /home/niyas/git-repos/aurora2018/build/nmea_navsat_driver && /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/remove_test_results.py /home/niyas/git-repos/aurora2018/build/test_results/nmea_navsat_driver
 
 clean_test_results_nmea_navsat_driver: nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver
 clean_test_results_nmea_navsat_driver: nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/build.make
@@ -67,10 +67,10 @@ nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/build: c
 .PHONY : nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/build
 
 nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/clean:
-	cd /home/achu/aurora2018/aurora2018/build/nmea_navsat_driver && $(CMAKE_COMMAND) -P CMakeFiles/clean_test_results_nmea_navsat_driver.dir/cmake_clean.cmake
+	cd /home/niyas/git-repos/aurora2018/build/nmea_navsat_driver && $(CMAKE_COMMAND) -P CMakeFiles/clean_test_results_nmea_navsat_driver.dir/cmake_clean.cmake
 .PHONY : nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/clean
 
 nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/depend:
-	cd /home/achu/aurora2018/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/achu/aurora2018/aurora2018/src /home/achu/aurora2018/aurora2018/src/nmea_navsat_driver /home/achu/aurora2018/aurora2018/build /home/achu/aurora2018/aurora2018/build/nmea_navsat_driver /home/achu/aurora2018/aurora2018/build/nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/niyas/git-repos/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/niyas/git-repos/aurora2018/src /home/niyas/git-repos/aurora2018/src/nmea_navsat_driver /home/niyas/git-repos/aurora2018/build /home/niyas/git-repos/aurora2018/build/nmea_navsat_driver /home/niyas/git-repos/aurora2018/build/nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : nmea_navsat_driver/CMakeFiles/clean_test_results_nmea_navsat_driver.dir/depend
 

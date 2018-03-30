@@ -1,8 +1,8 @@
-# Install script for directory: /home/achu/aurora2018/aurora2018/src/navigation
+# Install script for directory: /home/niyas/git-repos/aurora2018/src/navigation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/achu/aurora2018/aurora2018/install")
+  set(CMAKE_INSTALL_PREFIX "/home/niyas/git-repos/aurora2018/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/build/navigation/catkin_generated/installspace/navigation.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/build/navigation/catkin_generated/installspace/navigation.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/navigation/cmake" TYPE FILE FILES
-    "/home/achu/aurora2018/aurora2018/build/navigation/catkin_generated/installspace/navigationConfig.cmake"
-    "/home/achu/aurora2018/aurora2018/build/navigation/catkin_generated/installspace/navigationConfig-version.cmake"
+    "/home/niyas/git-repos/aurora2018/build/navigation/catkin_generated/installspace/navigationConfig.cmake"
+    "/home/niyas/git-repos/aurora2018/build/navigation/catkin_generated/installspace/navigationConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/navigation" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/src/navigation/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/navigation" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/src/navigation/package.xml")
 endif()
 

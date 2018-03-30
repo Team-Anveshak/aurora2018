@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/achu/aurora2018/aurora2018/src
+CMAKE_SOURCE_DIR = /home/niyas/git-repos/aurora2018/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/achu/aurora2018/aurora2018/build
+CMAKE_BINARY_DIR = /home/niyas/git-repos/aurora2018/build
 
 # Include any dependencies generated for this target.
 include man_ctrl/CMakeFiles/drive.dir/depend.make
@@ -58,17 +58,17 @@ include man_ctrl/CMakeFiles/drive.dir/progress.make
 include man_ctrl/CMakeFiles/drive.dir/flags.make
 
 man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o: man_ctrl/CMakeFiles/drive.dir/flags.make
-man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o: /home/achu/aurora2018/aurora2018/src/man_ctrl/src/drive.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/achu/aurora2018/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o"
-	cd /home/achu/aurora2018/aurora2018/build/man_ctrl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/drive.dir/src/drive.cpp.o -c /home/achu/aurora2018/aurora2018/src/man_ctrl/src/drive.cpp
+man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o: /home/niyas/git-repos/aurora2018/src/man_ctrl/src/drive.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/niyas/git-repos/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o"
+	cd /home/niyas/git-repos/aurora2018/build/man_ctrl && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/drive.dir/src/drive.cpp.o -c /home/niyas/git-repos/aurora2018/src/man_ctrl/src/drive.cpp
 
 man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/drive.dir/src/drive.cpp.i"
-	cd /home/achu/aurora2018/aurora2018/build/man_ctrl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/achu/aurora2018/aurora2018/src/man_ctrl/src/drive.cpp > CMakeFiles/drive.dir/src/drive.cpp.i
+	cd /home/niyas/git-repos/aurora2018/build/man_ctrl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/niyas/git-repos/aurora2018/src/man_ctrl/src/drive.cpp > CMakeFiles/drive.dir/src/drive.cpp.i
 
 man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/drive.dir/src/drive.cpp.s"
-	cd /home/achu/aurora2018/aurora2018/build/man_ctrl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/achu/aurora2018/aurora2018/src/man_ctrl/src/drive.cpp -o CMakeFiles/drive.dir/src/drive.cpp.s
+	cd /home/niyas/git-repos/aurora2018/build/man_ctrl && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/niyas/git-repos/aurora2018/src/man_ctrl/src/drive.cpp -o CMakeFiles/drive.dir/src/drive.cpp.s
 
 man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o.requires:
 
@@ -88,33 +88,33 @@ drive_OBJECTS = \
 # External object files for target drive
 drive_EXTERNAL_OBJECTS =
 
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: man_ctrl/CMakeFiles/drive.dir/build.make
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libroscpp.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librosconsole.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librostime.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libcpp_common.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive: man_ctrl/CMakeFiles/drive.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/achu/aurora2018/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive"
-	cd /home/achu/aurora2018/aurora2018/build/man_ctrl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/drive.dir/link.txt --verbose=$(VERBOSE)
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: man_ctrl/CMakeFiles/drive.dir/src/drive.cpp.o
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: man_ctrl/CMakeFiles/drive.dir/build.make
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libroscpp.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librosconsole.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/librostime.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /opt/ros/kinetic/lib/libcpp_common.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive: man_ctrl/CMakeFiles/drive.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/niyas/git-repos/aurora2018/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive"
+	cd /home/niyas/git-repos/aurora2018/build/man_ctrl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/drive.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-man_ctrl/CMakeFiles/drive.dir/build: /home/achu/aurora2018/aurora2018/devel/lib/man_ctrl/drive
+man_ctrl/CMakeFiles/drive.dir/build: /home/niyas/git-repos/aurora2018/devel/lib/man_ctrl/drive
 
 .PHONY : man_ctrl/CMakeFiles/drive.dir/build
 
@@ -123,10 +123,10 @@ man_ctrl/CMakeFiles/drive.dir/requires: man_ctrl/CMakeFiles/drive.dir/src/drive.
 .PHONY : man_ctrl/CMakeFiles/drive.dir/requires
 
 man_ctrl/CMakeFiles/drive.dir/clean:
-	cd /home/achu/aurora2018/aurora2018/build/man_ctrl && $(CMAKE_COMMAND) -P CMakeFiles/drive.dir/cmake_clean.cmake
+	cd /home/niyas/git-repos/aurora2018/build/man_ctrl && $(CMAKE_COMMAND) -P CMakeFiles/drive.dir/cmake_clean.cmake
 .PHONY : man_ctrl/CMakeFiles/drive.dir/clean
 
 man_ctrl/CMakeFiles/drive.dir/depend:
-	cd /home/achu/aurora2018/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/achu/aurora2018/aurora2018/src /home/achu/aurora2018/aurora2018/src/man_ctrl /home/achu/aurora2018/aurora2018/build /home/achu/aurora2018/aurora2018/build/man_ctrl /home/achu/aurora2018/aurora2018/build/man_ctrl/CMakeFiles/drive.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/niyas/git-repos/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/niyas/git-repos/aurora2018/src /home/niyas/git-repos/aurora2018/src/man_ctrl /home/niyas/git-repos/aurora2018/build /home/niyas/git-repos/aurora2018/build/man_ctrl /home/niyas/git-repos/aurora2018/build/man_ctrl/CMakeFiles/drive.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : man_ctrl/CMakeFiles/drive.dir/depend
 

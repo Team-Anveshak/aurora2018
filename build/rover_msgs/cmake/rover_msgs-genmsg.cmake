@@ -2,7 +2,7 @@
 
 message(STATUS "rover_msgs: 4 messages, 0 services")
 
-set(MSG_I_FLAGS "-Irover_msgs:/home/achu/aurora2018/aurora2018/src/rover_msgs/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Irover_msgs:/home/niyas/git-repos/aurora2018/src/rover_msgs/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,24 +17,24 @@ add_custom_target(rover_msgs_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
 add_custom_target(_rover_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg" ""
 )
 
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
 add_custom_target(_rover_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg" ""
 )
 
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
 add_custom_target(_rover_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" ""
 )
 
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
 add_custom_target(_rover_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "rover_msgs" "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg" ""
 )
 
 #
@@ -44,25 +44,25 @@ add_custom_target(_rover_msgs_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_cpp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_cpp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_cpp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/rover_msgs
@@ -82,13 +82,13 @@ add_custom_target(rover_msgs_generate_messages_cpp
 add_dependencies(rover_msgs_generate_messages rover_msgs_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_cpp _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_cpp _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_cpp _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_cpp _rover_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -101,25 +101,25 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS rover_msgs_generate_messages_cpp)
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_eus(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_eus(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_eus(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/rover_msgs
@@ -139,13 +139,13 @@ add_custom_target(rover_msgs_generate_messages_eus
 add_dependencies(rover_msgs_generate_messages rover_msgs_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_eus _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_eus _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_eus _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_eus _rover_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -158,25 +158,25 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS rover_msgs_generate_messages_eus)
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_lisp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_lisp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_lisp(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/rover_msgs
@@ -196,13 +196,13 @@ add_custom_target(rover_msgs_generate_messages_lisp
 add_dependencies(rover_msgs_generate_messages rover_msgs_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_lisp _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_lisp _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_lisp _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_lisp _rover_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -215,25 +215,25 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS rover_msgs_generate_messages_lisp)
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_nodejs(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_nodejs(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_nodejs(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/rover_msgs
@@ -253,13 +253,13 @@ add_custom_target(rover_msgs_generate_messages_nodejs
 add_dependencies(rover_msgs_generate_messages rover_msgs_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_nodejs _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_nodejs _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_nodejs _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_nodejs _rover_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -272,25 +272,25 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS rover_msgs_generate_messages_nodejs
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_py(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_py(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rover_msgs
 )
 _generate_msg_py(rover_msgs
-  "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg"
+  "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/rover_msgs
@@ -310,13 +310,13 @@ add_custom_target(rover_msgs_generate_messages_py
 add_dependencies(rover_msgs_generate_messages rover_msgs_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Goal.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_py _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/enc.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_py _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/WheelVelocity.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_py _rover_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/achu/aurora2018/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
+get_filename_component(_filename "/home/niyas/git-repos/aurora2018/src/rover_msgs/msg/Imu.msg" NAME_WE)
 add_dependencies(rover_msgs_generate_messages_py _rover_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

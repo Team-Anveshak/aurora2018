@@ -54,13 +54,13 @@ class WheelVelocity {
         this.rot = initObj.rot
       }
       else {
-        this.rot = 0.0;
+        this.rot = 0;
       }
       if (initObj.hasOwnProperty('rots')) {
         this.rots = initObj.rots
       }
       else {
-        this.rots = 0.0;
+        this.rots = 0;
       }
     }
   }
@@ -76,9 +76,9 @@ class WheelVelocity {
     // Serialize message field [right_back_vel]
     bufferOffset = _serializer.float64(obj.right_back_vel, buffer, bufferOffset);
     // Serialize message field [rot]
-    bufferOffset = _serializer.float64(obj.rot, buffer, bufferOffset);
+    bufferOffset = _serializer.int16(obj.rot, buffer, bufferOffset);
     // Serialize message field [rots]
-    bufferOffset = _serializer.float64(obj.rots, buffer, bufferOffset);
+    bufferOffset = _serializer.int16(obj.rots, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -95,14 +95,14 @@ class WheelVelocity {
     // Deserialize message field [right_back_vel]
     data.right_back_vel = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [rot]
-    data.rot = _deserializer.float64(buffer, bufferOffset);
+    data.rot = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [rots]
-    data.rots = _deserializer.float64(buffer, bufferOffset);
+    data.rots = _deserializer.int16(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 48;
+    return 36;
   }
 
   static datatype() {
@@ -112,7 +112,7 @@ class WheelVelocity {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '021a4e13541d54d27e7ce3fd77d36308';
+    return '1a7e790a86a891aac209cbcfa527fcf8';
   }
 
   static messageDefinition() {
@@ -122,8 +122,8 @@ class WheelVelocity {
     float64 right_front_vel
     float64 left_back_vel
     float64 right_back_vel
-    float64 rot
-    float64 rots
+    int16 rot
+    int16 rots
     
     
     `;
@@ -167,14 +167,14 @@ class WheelVelocity {
       resolved.rot = msg.rot;
     }
     else {
-      resolved.rot = 0.0
+      resolved.rot = 0
     }
 
     if (msg.rots !== undefined) {
       resolved.rots = msg.rots;
     }
     else {
-      resolved.rots = 0.0
+      resolved.rots = 0
     }
 
     return resolved;

@@ -7,19 +7,19 @@ import struct
 
 
 class WheelVelocity(genpy.Message):
-  _md5sum = "021a4e13541d54d27e7ce3fd77d36308"
+  _md5sum = "1a7e790a86a891aac209cbcfa527fcf8"
   _type = "rover_msgs/WheelVelocity"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """float64 left_front_vel
 float64 right_front_vel
 float64 left_back_vel
 float64 right_back_vel
-float64 rot
-float64 rots
+int16 rot
+int16 rots
 
 """
   __slots__ = ['left_front_vel','right_front_vel','left_back_vel','right_back_vel','rot','rots']
-  _slot_types = ['float64','float64','float64','float64','float64','float64']
+  _slot_types = ['float64','float64','float64','float64','int16','int16']
 
   def __init__(self, *args, **kwds):
     """
@@ -47,16 +47,16 @@ float64 rots
       if self.right_back_vel is None:
         self.right_back_vel = 0.
       if self.rot is None:
-        self.rot = 0.
+        self.rot = 0
       if self.rots is None:
-        self.rots = 0.
+        self.rots = 0
     else:
       self.left_front_vel = 0.
       self.right_front_vel = 0.
       self.left_back_vel = 0.
       self.right_back_vel = 0.
-      self.rot = 0.
-      self.rots = 0.
+      self.rot = 0
+      self.rots = 0
 
   def _get_types(self):
     """
@@ -71,7 +71,7 @@ float64 rots
     """
     try:
       _x = self
-      buff.write(_get_struct_6d().pack(_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots))
+      buff.write(_get_struct_4d2h().pack(_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -84,8 +84,8 @@ float64 rots
       end = 0
       _x = self
       start = end
-      end += 48
-      (_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots,) = _get_struct_6d().unpack(str[start:end])
+      end += 36
+      (_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots,) = _get_struct_4d2h().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -99,7 +99,7 @@ float64 rots
     """
     try:
       _x = self
-      buff.write(_get_struct_6d().pack(_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots))
+      buff.write(_get_struct_4d2h().pack(_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -113,8 +113,8 @@ float64 rots
       end = 0
       _x = self
       start = end
-      end += 48
-      (_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots,) = _get_struct_6d().unpack(str[start:end])
+      end += 36
+      (_x.left_front_vel, _x.right_front_vel, _x.left_back_vel, _x.right_back_vel, _x.rot, _x.rots,) = _get_struct_4d2h().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -123,9 +123,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_6d = None
-def _get_struct_6d():
-    global _struct_6d
-    if _struct_6d is None:
-        _struct_6d = struct.Struct("<6d")
-    return _struct_6d
+_struct_4d2h = None
+def _get_struct_4d2h():
+    global _struct_4d2h
+    if _struct_4d2h is None:
+        _struct_4d2h = struct.Struct("<4d2h")
+    return _struct_4d2h

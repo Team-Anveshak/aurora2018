@@ -10,4 +10,7 @@ set(razor_imu_9dof_EXEC_DEPENDS "rospy" "tf" "sensor_msgs" "python-serial" "dyna
 set(razor_imu_9dof_RUN_DEPENDS "rospy" "tf" "sensor_msgs" "python-serial" "dynamic_reconfigure")
 set(razor_imu_9dof_TEST_DEPENDS )
 set(razor_imu_9dof_DOC_DEPENDS )
+set(razor_imu_9dof_URL_WEBSITE "http://ros.org/wiki/razor_imu_9dof")
+set(razor_imu_9dof_URL_BUGTRACKER "")
+set(razor_imu_9dof_URL_REPOSITORY "")
 set(razor_imu_9dof_DEPRECATED "")

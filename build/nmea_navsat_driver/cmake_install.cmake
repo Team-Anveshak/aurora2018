@@ -1,8 +1,8 @@
-# Install script for directory: /home/achu/aurora2018/aurora2018/src/nmea_navsat_driver
+# Install script for directory: /home/niyas/git-repos/aurora2018/src/nmea_navsat_driver
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/achu/aurora2018/aurora2018/install")
+  set(CMAKE_INSTALL_PREFIX "/home/niyas/git-repos/aurora2018/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,29 +33,29 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  include("/home/achu/aurora2018/aurora2018/build/nmea_navsat_driver/catkin_generated/safe_execute_install.cmake")
+  include("/home/niyas/git-repos/aurora2018/build/nmea_navsat_driver/catkin_generated/safe_execute_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driver.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driver.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/nmea_navsat_driver/cmake" TYPE FILE FILES
-    "/home/achu/aurora2018/aurora2018/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig.cmake"
-    "/home/achu/aurora2018/aurora2018/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig-version.cmake"
+    "/home/niyas/git-repos/aurora2018/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig.cmake"
+    "/home/niyas/git-repos/aurora2018/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/nmea_navsat_driver" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/src/nmea_navsat_driver/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/nmea_navsat_driver" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/src/nmea_navsat_driver/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/nmea_navsat_driver" TYPE PROGRAM FILES
-    "/home/achu/aurora2018/aurora2018/src/nmea_navsat_driver/scripts/nmea_serial_driver"
-    "/home/achu/aurora2018/aurora2018/src/nmea_navsat_driver/scripts/nmea_topic_driver"
-    "/home/achu/aurora2018/aurora2018/src/nmea_navsat_driver/scripts/nmea_topic_serial_reader"
+    "/home/niyas/git-repos/aurora2018/src/nmea_navsat_driver/scripts/nmea_serial_driver"
+    "/home/niyas/git-repos/aurora2018/src/nmea_navsat_driver/scripts/nmea_topic_driver"
+    "/home/niyas/git-repos/aurora2018/src/nmea_navsat_driver/scripts/nmea_topic_serial_reader"
     )
 endif()
 

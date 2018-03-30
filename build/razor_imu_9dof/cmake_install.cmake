@@ -1,8 +1,8 @@
-# Install script for directory: /home/achu/aurora2018/aurora2018/src/razor_imu_9dof
+# Install script for directory: /home/niyas/git-repos/aurora2018/src/razor_imu_9dof
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/achu/aurora2018/aurora2018/install")
+  set(CMAKE_INSTALL_PREFIX "/home/niyas/git-repos/aurora2018/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,61 +33,61 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/razor_imu_9dof" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/devel/include/razor_imu_9dof/imuConfig.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/razor_imu_9dof" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/devel/include/razor_imu_9dof/imuConfig.h")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/razor_imu_9dof" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/devel/lib/python2.7/dist-packages/razor_imu_9dof/__init__.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/razor_imu_9dof" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/devel/lib/python2.7/dist-packages/razor_imu_9dof/__init__.py")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/achu/aurora2018/aurora2018/devel/lib/python2.7/dist-packages/razor_imu_9dof/cfg")
+  execute_process(COMMAND "/usr/bin/python" -m compileall "/home/niyas/git-repos/aurora2018/devel/lib/python2.7/dist-packages/razor_imu_9dof/cfg")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/razor_imu_9dof" TYPE DIRECTORY FILES "/home/achu/aurora2018/aurora2018/devel/lib/python2.7/dist-packages/razor_imu_9dof/cfg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/razor_imu_9dof" TYPE DIRECTORY FILES "/home/niyas/git-repos/aurora2018/devel/lib/python2.7/dist-packages/razor_imu_9dof/cfg")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/razor_imu_9dof.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/razor_imu_9dof.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof/cmake" TYPE FILE FILES
-    "/home/achu/aurora2018/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/razor_imu_9dofConfig.cmake"
-    "/home/achu/aurora2018/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/razor_imu_9dofConfig-version.cmake"
+    "/home/niyas/git-repos/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/razor_imu_9dofConfig.cmake"
+    "/home/niyas/git-repos/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/razor_imu_9dofConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE FILE FILES "/home/achu/aurora2018/aurora2018/src/razor_imu_9dof/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE FILE FILES "/home/niyas/git-repos/aurora2018/src/razor_imu_9dof/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/achu/aurora2018/aurora2018/src/razor_imu_9dof/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/niyas/git-repos/aurora2018/src/razor_imu_9dof/launch")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/achu/aurora2018/aurora2018/src/razor_imu_9dof/config")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/niyas/git-repos/aurora2018/src/razor_imu_9dof/config")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/achu/aurora2018/aurora2018/src/razor_imu_9dof/cfg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/niyas/git-repos/aurora2018/src/razor_imu_9dof/cfg")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/achu/aurora2018/aurora2018/src/razor_imu_9dof/src")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/niyas/git-repos/aurora2018/src/razor_imu_9dof/src")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/achu/aurora2018/aurora2018/src/razor_imu_9dof/magnetometer_calibration")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof" TYPE DIRECTORY FILES "/home/niyas/git-repos/aurora2018/src/razor_imu_9dof/magnetometer_calibration")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof/nodes" TYPE PROGRAM FILES "/home/achu/aurora2018/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/imu_node.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof/nodes" TYPE PROGRAM FILES "/home/niyas/git-repos/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/imu_node.py")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof/nodes" TYPE PROGRAM FILES "/home/achu/aurora2018/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/display_3D_visualization.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/razor_imu_9dof/nodes" TYPE PROGRAM FILES "/home/niyas/git-repos/aurora2018/build/razor_imu_9dof/catkin_generated/installspace/display_3D_visualization.py")
 endif()
 

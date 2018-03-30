@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rover_msgs_generate_messages_cpp"
-  "/home/achu/aurora2018/aurora2018/devel/include/rover_msgs/Goal.h"
-  "/home/achu/aurora2018/aurora2018/devel/include/rover_msgs/enc.h"
-  "/home/achu/aurora2018/aurora2018/devel/include/rover_msgs/WheelVelocity.h"
-  "/home/achu/aurora2018/aurora2018/devel/include/rover_msgs/Imu.h"
+  "/home/niyas/git-repos/aurora2018/devel/include/rover_msgs/Goal.h"
+  "/home/niyas/git-repos/aurora2018/devel/include/rover_msgs/enc.h"
+  "/home/niyas/git-repos/aurora2018/devel/include/rover_msgs/WheelVelocity.h"
+  "/home/niyas/git-repos/aurora2018/devel/include/rover_msgs/Imu.h"
 )
 
 # Per-language clean rules from dependency scanning.

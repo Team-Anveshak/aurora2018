@@ -28,16 +28,16 @@ struct WheelVelocity_
     , right_front_vel(0.0)
     , left_back_vel(0.0)
     , right_back_vel(0.0)
-    , rot(0.0)
-    , rots(0.0)  {
+    , rot(0)
+    , rots(0)  {
     }
   WheelVelocity_(const ContainerAllocator& _alloc)
     : left_front_vel(0.0)
     , right_front_vel(0.0)
     , left_back_vel(0.0)
     , right_back_vel(0.0)
-    , rot(0.0)
-    , rots(0.0)  {
+    , rot(0)
+    , rots(0)  {
   (void)_alloc;
     }
 
@@ -55,10 +55,10 @@ struct WheelVelocity_
    typedef double _right_back_vel_type;
   _right_back_vel_type right_back_vel;
 
-   typedef double _rot_type;
+   typedef int16_t _rot_type;
   _rot_type rot;
 
-   typedef double _rots_type;
+   typedef int16_t _rots_type;
   _rots_type rots;
 
 
@@ -95,7 +95,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'sensor_msgs': ['/opt/ros/kinetic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'rover_msgs': ['/home/achu/aurora2018/aurora2018/src/rover_msgs/msg']}
+// {'sensor_msgs': ['/opt/ros/kinetic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'rover_msgs': ['/home/niyas/git-repos/aurora2018/src/rover_msgs/msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -138,12 +138,12 @@ struct MD5Sum< ::rover_msgs::WheelVelocity_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "021a4e13541d54d27e7ce3fd77d36308";
+    return "1a7e790a86a891aac209cbcfa527fcf8";
   }
 
   static const char* value(const ::rover_msgs::WheelVelocity_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x021a4e13541d54d2ULL;
-  static const uint64_t static_value2 = 0x7e7ce3fd77d36308ULL;
+  static const uint64_t static_value1 = 0x1a7e790a86a891aaULL;
+  static const uint64_t static_value2 = 0xc209cbcfa527fcf8ULL;
 };
 
 template<class ContainerAllocator>
@@ -166,8 +166,8 @@ struct Definition< ::rover_msgs::WheelVelocity_<ContainerAllocator> >
 float64 right_front_vel\n\
 float64 left_back_vel\n\
 float64 right_back_vel\n\
-float64 rot\n\
-float64 rots\n\
+int16 rot\n\
+int16 rots\n\
 \n\
 ";
   }
@@ -220,9 +220,9 @@ struct Printer< ::rover_msgs::WheelVelocity_<ContainerAllocator> >
     s << indent << "right_back_vel: ";
     Printer<double>::stream(s, indent + "  ", v.right_back_vel);
     s << indent << "rot: ";
-    Printer<double>::stream(s, indent + "  ", v.rot);
+    Printer<int16_t>::stream(s, indent + "  ", v.rot);
     s << indent << "rots: ";
-    Printer<double>::stream(s, indent + "  ", v.rots);
+    Printer<int16_t>::stream(s, indent + "  ", v.rots);
   }
 };
 

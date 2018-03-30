@@ -1,5 +1,5 @@
 /* rosserial Subscriber For Locomotion Control*/
-#define USE_USBCON
+/*#define USE_USBCON*/
 #include <ros.h>
 #include <rover_msgs/WheelVelocity.h>
 
@@ -10,16 +10,19 @@
 #define pwm2 3
 #define slp2 37
 #define dir3 39
-#define pwm3 4
+#define pwm3 10
 #define slp3 41
 #define dir4 43
 #define pwm4 5
 #define slp4 45
 
-#define ldir 23
-#define lpwm 9
-#define rdir 25
-#define rpwm 8
+#define ldir 29
+#define lpwm 6
+#define rdir 27
+#define rpwm 7
+
+#define lpotPin A8
+#define rpotPin A9
 
 int rot = 0,rot2 = 0;
 int tl = 0,tr = 0, bl = 0, br = 0;
@@ -45,7 +48,6 @@ void loco(int vel,int dir_pin,int pwm_pin,int slp_pin)
         digitalWrite(dir_pin,LOW);
         analogWrite(pwm_pin,abs(vel));
     }
-      
      
   else
     { 
@@ -60,12 +62,12 @@ void rotate_steer_right(int vel)
   if(vel>0.8){
     
     digitalWrite(rdir,LOW);
-    analogWrite(rpwm,250);
+    analogWrite(rpwm,100);
   }
   else if (vel< -0.8){
 
     digitalWrite(rdir,HIGH);
-    analogWrite(rpwm,250);
+    analogWrite(rpwm,100);
   }
   
   else{
@@ -79,12 +81,12 @@ void rotate_steer_left(int vel)
 {
   if(vel>0.8){
     digitalWrite(ldir,HIGH);
-    analogWrite(lpwm,80);
+    analogWrite(lpwm,100);
     
   }
   else if (vel<-0.8){
     digitalWrite(ldir,LOW);
-    analogWrite(lpwm,245);
+    analogWrite(lpwm,100);
     
   }
   
@@ -104,7 +106,7 @@ void roverMotionCallback(const rover_msgs::WheelVelocity& RoverVelocity){
   rot2 = RoverVelocity.rots ;
   
   rotate_steer_left(int(rot2));
- rotate_steer_right(int(rot));
+  rotate_steer_right(int(rot));
 
   
  }
@@ -136,13 +138,14 @@ void setup(){
 //TCCR3B |= myPrescaler;  //this operation (OR), replaces the last three bits in TCCR2B with our new value 011
 //     // this is 111 in binary and is used as an eraser
 
-
+  pinMode(lpotPin, INPUT);
+  pinMode(rpotPin, INPUT);
 
   digitalWrite(slp1,HIGH);
   digitalWrite(slp2,HIGH);
   digitalWrite(slp3,HIGH);
   digitalWrite(slp4,HIGH);
-   nh.advertise(vel_pub);
+  nh.advertise(vel_pub);
   
  
 }
@@ -155,20 +158,21 @@ void loop(){
   bl = (int)lb;
   br = (int)rb;
   
- 
-
   loco(tl,dir1,pwm1,slp1);
   loco(tr,dir2,pwm2,slp2);
   loco(bl,dir3,pwm3,slp3);
   loco(br,dir4,pwm4,slp4);
-  
 
- 
-
- 
+  rpot = analogRead(rpotPin);
+  lpot = analogRead(lpotPin);
   
+  RoverVel.left_front_vel=rpot;
+  RoverVel.right_front_vel=lpot;
+  RoverVel.left_back_vel=bl;
+  RoverVel.right_back_vel=br;
   RoverVel.rot = rot;
   RoverVel.rots = rot2;
+  
 
   vel_pub.publish(&RoverVel);
   

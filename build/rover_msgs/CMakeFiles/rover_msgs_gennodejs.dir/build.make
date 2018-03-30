@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/achu/aurora2018/aurora2018/src
+CMAKE_SOURCE_DIR = /home/niyas/git-repos/aurora2018/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/achu/aurora2018/aurora2018/build
+CMAKE_BINARY_DIR = /home/niyas/git-repos/aurora2018/build
 
 # Utility rule file for rover_msgs_gennodejs.
 
@@ -63,10 +63,10 @@ rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/build: rover_msgs_gennodejs
 .PHONY : rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/build
 
 rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/clean:
-	cd /home/achu/aurora2018/aurora2018/build/rover_msgs && $(CMAKE_COMMAND) -P CMakeFiles/rover_msgs_gennodejs.dir/cmake_clean.cmake
+	cd /home/niyas/git-repos/aurora2018/build/rover_msgs && $(CMAKE_COMMAND) -P CMakeFiles/rover_msgs_gennodejs.dir/cmake_clean.cmake
 .PHONY : rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/clean
 
 rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/depend:
-	cd /home/achu/aurora2018/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/achu/aurora2018/aurora2018/src /home/achu/aurora2018/aurora2018/src/rover_msgs /home/achu/aurora2018/aurora2018/build /home/achu/aurora2018/aurora2018/build/rover_msgs /home/achu/aurora2018/aurora2018/build/rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/niyas/git-repos/aurora2018/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/niyas/git-repos/aurora2018/src /home/niyas/git-repos/aurora2018/src/rover_msgs /home/niyas/git-repos/aurora2018/build /home/niyas/git-repos/aurora2018/build/rover_msgs /home/niyas/git-repos/aurora2018/build/rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rover_msgs/CMakeFiles/rover_msgs_gennodejs.dir/depend
 
