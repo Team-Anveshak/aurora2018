@@ -1,4 +1,3 @@
-initial_lat: 0.0
-initial_lon: 0.0
-dest_lat: 2.0
-dest_lon: 2.0
+latitude: 2.0
+longitude: 2.0
+publish: 1

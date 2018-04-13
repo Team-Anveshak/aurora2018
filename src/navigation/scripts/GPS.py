@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+12.991221512/80.23294641
+12.99186955/80.23278201
 
 import rospy
 from sensor_msgs.msg import NavSatFix
@@ -8,8 +10,8 @@ from math import *
 import time
 
 
-initial_lat = 9.30513775
-initial_lon = 76.53274845
+# initial_lat = 9.30513775
+# initial_lon = 76.53274845
 
 
 class GPS() :
@@ -17,24 +19,32 @@ class GPS() :
 	def __init__(self):
 
 
+		file_path = "/home/achu/aurora2018/src/navigation/config/gps_data.txt"
+		self.f=open(file_path,'r')
+		self.dest_lat_cont,self.dest_lon_cont = [],[]
+		for l in self.f:
+			row = l.split()
+			self.dest_lat_cont.append(row[0])
+			self.dest_lon_cont.append(row[1])
 		rospy.init_node("gps_goal")
-		self.pub_motor = rospy.Publisher('rover/wheel_vel', WheelVelocity,queue_size=10)
+		self.pub_motor = rospy.Publisher('loco/wheel_vel', WheelVelocity,queue_size=10)
 
 		rospy.Subscriber("imu", Imu, self.imuCallback)
 		rospy.Subscriber("fix", NavSatFix, self.gpsCallback)
 
 		#self.client.wait_for_server()
 
-		self.dest_lat= 12.992424
-		self.dest_lon= 80.232159
-		self.init_lat=12.992424
-		self.init_lon=80.232159
+		self.dest_lat= float(self.dest_lat_cont[0])
+		self.dest_lon= float(self.dest_lon_cont[0])
+		self.init_lat=0.0
+		self.init_lon=0.0
 		self.imu_yaw=0.0
 		self.status=0
 		self.then=time.time()
 		self.diff=0
 		self.bearing=0
-		self.dist = 0
+		self.dist =0.0
+		self.n =0
 
 
 
@@ -43,10 +53,13 @@ class GPS() :
 
 		while not rospy.is_shutdown():
 			self.diff=int(time.time()-self.then)
-			if(abs(self.diff)>5):
+			if(abs(self.diff)>1):
+				self.dest_lat= float(self.dest_lat_cont[self.n])
+				self.dest_lon= float(self.dest_lon_cont[self.n])
 				self.cal()
 				self.then=time.time()
 			self.goaler()
+
 	def cal(self):
 
 		lon1, lat1, lon2, lat2 = map(radians, [self.init_lon, self.init_lat, self.dest_lon, self.dest_lat])
@@ -59,8 +72,6 @@ class GPS() :
 
 		bearing = atan2(sin(lon2-lon1)*cos(lat2), (cos(lat1)*sin(lat2))-(sin(lat1)*cos(lat2)*cos(lon2-lon1)))
 		bearing = degrees(bearing)
-		if (bearing<0):
-			bearing = bearing+360
 		self.bearing = bearing
 		print ""
 		print ""
@@ -85,26 +96,35 @@ class GPS() :
 	def goaler(self):
 		r = rospy.Rate(10)
 		vel = WheelVelocity()
-		if ()
-		if (abs(self.bearing-self.imu_yaw)>10):
-			if (self.bearing-self.imu_yaw<0):
-				vel.left_front_vel  = -35
-				vel.right_front_vel  = 20
-				print "yaw"
-				print self.imu_yaw
-				print "--------------------"
-			elif (self.bearing-self.imu_yaw>0):
-				vel.left_front_vel = 20
-				vel.right_front_vel =-20
-				print "yaw:"
-				print  self.imu_yaw
-				print "--------------------"
-			self.pub_motor.publish(vel)
-		else :
-			vel.left_front_vel  = 30
-			vel.right_front_vel  = 30
-			self.pub_motor.publish(vel)
-		r.sleep()
+		if (self.init_lat != 0.0):
+			if (self.dist>5):
+				if (abs(self.bearing-self.imu_yaw)>10):
+					if (self.bearing-self.imu_yaw<0):
+						vel.left_front_vel  = 45
+						vel.right_front_vel  = -45
+						print "yaw"
+						print self.imu_yaw
+						print "--------------------"
+					elif (self.bearing-self.imu_yaw>0):
+						vel.left_front_vel = -45
+						vel.right_front_vel =45
+						print "yaw:"
+						print  self.imu_yaw
+						print "--------------------"
+					self.pub_motor.publish(vel)
+				else :
+					vel.left_front_vel  = -80
+					vel.right_front_vel  = -80
+					self.pub_motor.publish(vel)
+				r.sleep()
+			else :
+				print "reached"
+				if (self.n<(len(self.dest_lat_cont)-1)):
+					self.n = self.n+1
+				vel.left_front_vel  = 0
+				vel.right_front_vel = 0
+				self.pub_motor.publish(vel)
+
 
 
 
@@ -112,8 +132,7 @@ class GPS() :
 
 		self.imu_yaw=msg.yaw
 		self.imu_yaw = -self.imu_yaw
-		if (self.imu_yaw<0):
-			self.imu_yaw=self.imu_yaw+360
+
 
 	def gpsCallback(self,msg):
 

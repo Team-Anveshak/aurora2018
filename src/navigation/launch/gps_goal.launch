@@ -1,9 +1,14 @@
 <?xml version="1.0"?>
 <launch>
 
-	<node pkg="navigation" type="GPS_goal.py" name="GPS_goal">
+	<node pkg="navigation" type="planner.py" name="Planner">
+		<rosparam file="$(find navigation)/config/planner.yaml" command="load" />
+  </node>
+	<node pkg="navigation" type="gps_nav.py" name="GPS_goal">
 		<rosparam file="$(find navigation)/config/gps_data.yaml" command="load" />
-    </node>
-
+	</node>
+	<!-- <node pkg="navigation" type="imu.py" name="IMU">
+		<rosparam file="$(find navigation)/config/razor.yaml" command="load" />
+	</node> -->
 
 </launch>

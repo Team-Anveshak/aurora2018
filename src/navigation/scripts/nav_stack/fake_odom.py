@@ -79,12 +79,6 @@ def main():
 		r.sleep()
 
 
-
-
-
-
-
-
 def Odomcallback(msg):
 
 	global dx
