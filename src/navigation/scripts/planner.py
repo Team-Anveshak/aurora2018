@@ -19,7 +19,8 @@ class Planner() :
 		self.pub_planner = rospy.Publisher("planner_status", Planner_msg,queue_size=10)
 
 		rospy.Subscriber("imu", Imu, self.imuCallback)
-		rospy.Subscriber("destination", Goal, self.goalCallback)
+		rospy.Subscriber("destination_gps", Goal, self.goalCallback_gps)
+		rospy.Subscriber("destination_ball", Goal, self.goalCallback_ball)
 
 
 		self.dist_tolerance    = float(rospy.get_param('~dist_tolerance', 5))
@@ -37,7 +38,7 @@ class Planner() :
 		self.dist = 0.0
 		self.dist_prev= 0.0
 		self.stop = 0
-		self.state = 'turn'
+		self.state = 0
 
 		self.theta_r = 1.0
 		self.theta_l = 1.0
@@ -79,86 +80,125 @@ class Planner() :
 	def planner(self):
 		vel = WheelVelocity()
 		planner_status = Planner_msg()
+		if self.state ==1:
+			if self.dist>self.dist_tolerance:
+				planner_status.status = 0
+				if self.dist_prev != self.dist:
+					print 'turning'
+					vel.mode = 2
+					if (abs(self.bearing-self.imu_yaw)>self.bearing_tolerance):
+						velocity = self.turn_min + abs(self.bearing-self.imu_yaw)*self.kp_turn
+						velocity = velocity if velocity<self.turn_max else self.turn_max
 
-		if (self.dist>self.dist_tolerance):
-			planner_status.status = 0
-			if self.dist_prev != self.dist:
-				print 'turning'
-				vel.mode = 2
-				if (abs(self.bearing-self.imu_yaw)>self.bearing_tolerance):
-					velocity = self.turn_min + abs(self.bearing-self.imu_yaw)*self.kp_turn
-					velocity = velocity if velocity<self.turn_max else self.turn_max
+						if (self.bearing-self.imu_yaw<0):
+							vel.left_front_vel  = velocity                 # make the direction correct
+							vel.right_front_vel =  -velocity
+							vel.left_back_vel   = velocity
+							vel.right_back_vel  = - velocity
+							print "yaw_diff"
+							print self.bearing-self.imu_yaw
+							print "--------------------"
+							if self.stop ==0:
+								self.pub_motor.publish(vel)
 
-					if (self.bearing-self.imu_yaw<0):
-						vel.left_front_vel  = -velocity                 # make the direction correct
-						vel.right_front_vel =  velocity
-						vel.left_back_vel   = -velocity
-						vel.right_back_vel  =  velocity
-						print "yaw_diff"
-						print self.bearing-self.imu_yaw
-						print "--------------------"
+						elif (self.bearing-self.imu_yaw>0):
+							print "yaw_diff"
+							print self.bearing-self.imu_yaw
+							print "--------------------"
+							vel.left_front_vel  =  -velocity                 # make the direction correct
+							vel.right_front_vel =  velocity
+							vel.left_back_vel   =  -velocity
+							vel.right_back_vel  =  velocity
+							if self.stop ==0:
+								self.pub_motor.publish(vel)
+					else :
+						vel.mode = 1
+						self.dist_prev = self.dist
+						vel.left_front_vel  = 0
+						vel.right_front_vel = 0
+						vel.left_back_vel   = 0
+						vel.right_back_vel  = 0
+						vel.right_steer     = self.right_steer_zero
+						vel.left_steer      = self.left_steer_zero
+						if self.stop ==0:
+							self.pub_motor.publish(vel)
+						r = rospy.Rate(0.5)
+						r.sleep()
 
-					elif (self.bearing-self.imu_yaw>0):
-						print "yaw_diff"
-						print self.bearing-self.imu_yaw
-						print "--------------------"
-						vel.left_front_vel  =  velocity                 # make the direction correct
-						vel.right_front_vel = -velocity
-						vel.left_back_vel   =  velocity
-						vel.right_back_vel  = -velocity
-				else :
+				elif  self.dist_prev == self.dist:
 					vel.mode = 1
-					self.dist_prev = self.dist
-					vel.left_front_vel  = 0
-					vel.right_front_vel = 0
-					self.pub_motor.publish(vel)
-					r = rospy.Rate(1)
-					r.sleep()
+					print self.bearing-self.imu_yaw
+					self.theta_r,self.theta_l,self.vtheta_r,self.vtheta_l = self.steer((self.bearing-self.imu_yaw)/30)
+					vel.left_front_vel  = self.forward
+					vel.right_front_vel = self.forward
+					vel.left_back_vel   = self.forward
+					vel.right_back_vel  = self.forward
+					vel.right_steer     = self.right_steer_zero #+(math.degrees(self.theta_r)*self.kp_forward)
+					vel.left_steer      = self.left_steer_zero #+(math.degrees(self.theta_l)*self.kp_forward)
+					if self.stop ==0:
+						self.pub_motor.publish(vel)
+			else:
+				self.state =0
 
-			elif  self.dist_prev == self.dist:
-				vel.mode = 1
-				print self.bearing-self.imu_yaw
-				self.steer(self.bearing-self.imu_yaw)
-				vel.left_front_vel  = self.forward
-				vel.right_front_vel = self.forward
-				vel.left_back_vel   = self.forward
-				vel.right_back_vel  = self.forward
-				vel.right_steer     = self.right_steer_zero+(math.degrees(self.theta_r*4)*self.kp_forward)
-				vel.left_steer      = self.left_steer_zero +(math.degrees(self.theta_l*4)*self.kp_forward)
-				vel.right_steer     = (math.degrees(self.theta_r)*self.kp_forward*4)
-				vel.left_steer      = (math.degrees(self.theta_l)*self.kp_forward*4)
-
+		elif self.state ==2:
+			vel.mode = 1
+			planner_status.status = 0
+			self.pub_planner.publish(planner_status)
+			vel.left_front_vel  = 40
+			vel.right_front_vel = 40
+			vel.left_back_vel   = 40
+			vel.right_back_vel  = 40
+			vel.right_steer     = self.right_steer_zero #+(math.degrees(self.theta_r)*self.kp_forward)
+			vel.left_steer      = self.left_steer_zero #+(math.degrees(self.theta_l)*self.kp_forward)
+			if self.stop ==0:
 				self.pub_motor.publish(vel)
+			r = rospy.Rate(0.2)
+			r.sleep()
+			self.state =0
 
-		else :
+		elif self.state==0:
 			print "goal reached"
 			planner_status.status = 1
 			vel.left_front_vel  = 0
 			vel.right_front_vel = 0
-		self.pub_motor.publish(vel)
+			vel.left_back_vel   = 0
+			vel.right_back_vel  = 0
+			vel.right_steer     = self.right_steer_zero
+			vel.left_steer      = self.left_steer_zero
+			if self.stop ==0:
+				self.pub_motor.publish(vel)
+			self.pub_planner.publish(planner_status)
+
+		if self.stop ==0:
+			self.pub_motor.publish(vel)
 		self.pub_planner.publish(planner_status)
 
 
 	def steer(self,value):
 		if(value<0):
-			self.theta_r = -math.radians(min(abs(0.625*value),12.6))
-			self.theta_l = -math.radians(min(abs(0.625*value),20))
-
-			self.radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
-			self.vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
-			self.vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
+			theta_r =  math.radians(min(abs(12.6*value),12.6))
+			theta_l = -math.radians(min(abs(20*value),20))
+			try:
+				radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
+				vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
+				vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
+			except:
+				pass
 		elif(value>0):
-			self.theta_r = math.radians(min(abs(0.625*value)*value,20))
-			self.theta_l = math.radians(min(abs(0.625*value),12.6))
-
-			self.radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
-			self.vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
-			self.vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
+			theta_r = -math.radians(min(abs(20*value),20))
+			theta_l = math.radians(min(abs(12.6*value),12.6))
+			try:
+				radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
+				vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
+				vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
+			except:
+				pass
 		else:
-			self.theta_r =0.0
-			self.theta_l =0.0
-			self.vtheta_r=1.0
-			self.vtheta_l=1.0
+			theta_r =0.0
+			theta_l =0.0
+			vtheta_r=1.0
+			vtheta_l=1.0
+		return theta_r,theta_l,vtheta_r,vtheta_l
 
 	def imuCallback(self,msg):
 
@@ -166,10 +206,16 @@ class Planner() :
 		self.imu_yaw =-self.imu_yaw
 
 
-	def goalCallback(self,msg):
-
+	def goalCallback_gps(self,msg):
 		self.bearing = msg.bearing
 		self.dist = msg.distance
+		self.state = msg.state
+		self.stop = msg.stop
+
+	def goalCallback_ball(self,msg):
+		# self.bearing = msg.bearing
+		self.ball_dist = msg.distance
+		self.state = msg.state
 		self.stop = msg.stop
 
 if __name__ == '__main__':
