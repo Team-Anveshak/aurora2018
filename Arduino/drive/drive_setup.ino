@@ -4,25 +4,32 @@ void setup(){
 
   TCCR3B = TCCR3B & B11111000 | B00000001;    // set timer 3 divisor to     1 for PWM frequency of 31372.55 Hz  
   TCCR2B = TCCR2B & B11111000 | B00000001;    // set timer 2 divisor to     1 for PWM frequency of 31372.55 Hz
+
+  pan.attach(pan_pin);
+  tilt.attach(tilt_pin);
   
-  pinMode(dir1,OUTPUT);
-  pinMode(dir2,OUTPUT);
-  pinMode(dir3,OUTPUT);
-  pinMode(dir4,OUTPUT); 
+  pinMode(dirlf,OUTPUT);
+  pinMode(dirlb,OUTPUT);
+  pinMode(dirrf,OUTPUT);
+  pinMode(dirrb,OUTPUT); 
   
-  pinMode(pwm1,OUTPUT);
-  pinMode(pwm2,OUTPUT);
-  pinMode(pwm3,OUTPUT);
-  pinMode(pwm4,OUTPUT);
+  pinMode(pwmlf,OUTPUT);
+  pinMode(pwmlb,OUTPUT);
+  pinMode(pwmrf,OUTPUT);
+  pinMode(pwmrb,OUTPUT);
   
   pinMode(lpotPin, INPUT);
   pinMode(rpotPin, INPUT);
 
-  digitalWrite(slp1,HIGH);
-  digitalWrite(slp2,HIGH);
-  digitalWrite(slp3,HIGH);
-  digitalWrite(slp4,HIGH);
-  
+  digitalWrite(slplf,HIGH);
+  digitalWrite(slplb,HIGH);
+  digitalWrite(slprf,HIGH);
+  digitalWrite(slprb,HIGH);
+  set_r_zero = analogRead(rpotPin);
+  set_l_zero = analogRead(lpotPin);
   nh.advertise(diag_pub);
+  servo_now = millis();
+  pan.write(pan_pos);
+  tilt.write(tilt_pos);
  
 }

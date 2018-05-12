@@ -48,6 +48,8 @@ class drive():
         self.d=1
         self.cur_bearing = 0
         self.kp_forward = float(rospy.get_param('~kp_forward',2.0))
+        self.pan_joy = 0
+        self.tilt_joy = 0
 
         self.filepath = "/home/achu/aurora2018/src/man_ctrl/config/drive_config.txt"
         try:
@@ -126,6 +128,8 @@ class drive():
             vel.left_steer_vel  = self.left_steer_vel
             self.f.close()
 
+        vel.pan_joy = self.pan_joy
+        vel.tilt_joy = self.tilt_joy
         self.pub_motor.publish(vel)
 
     def steer(self,value):
@@ -154,7 +158,8 @@ class drive():
             vtheta_l=1.0
         return theta_r,theta_l,vtheta_r,vtheta_l
     def joyCallback(self,msg):
-
+        self.pan_joy = -msg.axes[4]
+        self.tilt_joy = msg.axes[5]
         self.straight  = msg.axes[1]
         self.zero_turn = msg.axes[3]
         self.steer_straight = msg.axes[2]

@@ -200,16 +200,6 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(drive src/drive.cpp)
-target_link_libraries(drive ${catkin_LIBRARIES})
-add_dependencies(drive ${catkin_EXPORTED_TARGETS})
 
-add_executable(drive1 src/drive1.cpp)
-target_link_libraries(drive1 ${catkin_LIBRARIES})
-add_dependencies(drive1 ${catkin_EXPORTED_TARGETS})
-
-add_executable(drive_diff src/drive_diff.cpp)
-target_link_libraries(drive_diff ${catkin_LIBRARIES})
-add_dependencies(drive_diff ${catkin_EXPORTED_TARGETS})
 
 

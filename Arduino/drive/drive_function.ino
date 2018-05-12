@@ -22,18 +22,21 @@ void rotate(int set_r,int set_l)
     {
       
       if((lpot-set_l)<0){
-        digitalWrite(ldir,HIGH);
-        analogWrite(lpwm,80);
+        digitalWrite(lmINA,HIGH);
+        digitalWrite(lmINB,LOW);
+        analogWrite(lmpwm,80);
       }
       else if((lpot-set_l)>0){
-        digitalWrite(ldir,LOW);
-        analogWrite(lpwm,80);
+        digitalWrite(lmINA,LOW);
+        digitalWrite(lmINB,HIGH);
+        analogWrite(lmpwm,80);
       }
     }
     else
     {
-      digitalWrite(ldir,LOW);
-      analogWrite(lpwm,0);
+     digitalWrite(lmINA,LOW);
+     digitalWrite(lmINB,LOW);
+      analogWrite(lmpwm,0);
     }
 
    
@@ -42,19 +45,22 @@ void rotate(int set_r,int set_l)
       
       if((rpot-set_r)<0)
       {
-        digitalWrite(rdir,HIGH);
-        analogWrite(rpwm,80);
+        digitalWrite(rmINA,HIGH);
+        digitalWrite(rmINB,LOW);
+        analogWrite(rmpwm,80);
       }
       else if((rpot-set_r)>0)
       {
-        digitalWrite(rdir,LOW);
-        analogWrite(rpwm,80);
+        digitalWrite(rmINA,LOW);
+        digitalWrite(rmINB,HIGH);
+        analogWrite(rmpwm,80);
       }
     }
     else
     {
-      digitalWrite(rdir,LOW);
-      analogWrite(rpwm,0);
+      digitalWrite(rmINA,LOW);
+      digitalWrite(rmINB,LOW);
+      analogWrite(rmpwm,0);
     }
     rpot = analogRead(rpotPin);
     lpot = analogRead(lpotPin);
@@ -66,41 +72,48 @@ void rotate_steer_right(int vel)
 { analogRead(rpotPin);
   if(vel>0.8){
     
-    digitalWrite(rdir,LOW);
-    analogWrite(rpwm,100);
+    digitalWrite(rmINA,LOW);
+    digitalWrite(rmINB,HIGH);
+    analogWrite(rmpwm,100);
   }
   else if (vel< -0.8){
 
-    digitalWrite(rdir,HIGH);
-    analogWrite(rpwm,100);
+    digitalWrite(rmINA,HIGH);
+    digitalWrite(rmINB,LOW);
+    analogWrite(rmpwm,100);
+    
   }
   
   else{
    
-    digitalWrite(rdir,LOW);
-    analogWrite(rpwm,0);
+   digitalWrite(rmINA,LOW);
+   digitalWrite(rmINB,LOW);
+   analogWrite(rmpwm,0);
   }
 }
 
 void rotate_steer_left(int vel)
 {
   if(vel>0.8){
-    digitalWrite(ldir,HIGH);
-    analogWrite(lpwm,100);
+    digitalWrite(lmINA,HIGH);
+    digitalWrite(lmINB,LOW);
+    analogWrite(lmpwm,100);
     
   }
   
   else if (vel<-0.8){
-    digitalWrite(ldir,LOW);
-    analogWrite(lpwm,100);
+    digitalWrite(lmINA,LOW);
+    digitalWrite(lmINB,HIGH);
+    analogWrite(lmpwm,100);
     
   }
   
   else{
-     digitalWrite(ldir,LOW);
-    analogWrite(lpwm,0);
+    digitalWrite(lmINA,LOW);
+    digitalWrite(lmINB,LOW);
+    analogWrite(lmpwm,0);
     
   }
  
 }
-
+///

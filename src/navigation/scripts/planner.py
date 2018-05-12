@@ -80,6 +80,7 @@ class Planner() :
 	def planner(self):
 		vel = WheelVelocity()
 		planner_status = Planner_msg()
+		# bearing_diff = 0
 		if self.state ==1:
 			if self.dist>self.dist_tolerance:
 				planner_status.status = 0
@@ -87,23 +88,27 @@ class Planner() :
 					print 'turning'
 					vel.mode = 2
 					if (abs(self.bearing-self.imu_yaw)>self.bearing_tolerance):
+						# if (self.bearing-90)>0 and (self.imu_yaw+90)<90:
+						# 	bearing_diff = self.bearing-(self.imu_yaw+360)
+						# else:
+						bearing_diff = self.bearing-self.imu_yaw
 						velocity = self.turn_min + abs(self.bearing-self.imu_yaw)*self.kp_turn
 						velocity = velocity if velocity<self.turn_max else self.turn_max
-
-						if (self.bearing-self.imu_yaw<0):
+						print bearing_diff
+						if (bearing_diff<0):
 							vel.left_front_vel  = velocity                 # make the direction correct
 							vel.right_front_vel =  -velocity
 							vel.left_back_vel   = velocity
 							vel.right_back_vel  = - velocity
 							print "yaw_diff"
-							print self.bearing-self.imu_yaw
+							# print bearing_diff
 							print "--------------------"
 							if self.stop ==0:
 								self.pub_motor.publish(vel)
 
-						elif (self.bearing-self.imu_yaw>0):
+						elif (bearing_diff>0):
 							print "yaw_diff"
-							print self.bearing-self.imu_yaw
+							# print bearing_diff
 							print "--------------------"
 							vel.left_front_vel  =  -velocity                 # make the direction correct
 							vel.right_front_vel =  velocity

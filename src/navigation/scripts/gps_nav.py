@@ -39,9 +39,9 @@ class GPS() :
 		self.then=time.time()
 		self.diff=0
 		self.bearing=0
-		self.planner_status = 0
+		self.planner_status = 1
 		self.n=0
-		self.mode='gps'
+		self.mode='ball'
 		self.flag=1
 		self.dist_tolerance    = float(rospy.get_param('~dist_tolerance', 5))
 		self.dist_gps=float(self.dist_tolerance+2.0)
