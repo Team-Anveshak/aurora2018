@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="joy" type="joy_node" name="first_joy" >
+    <param name="dev" value="/dev/input/js0"/>
+  </node>
+  <node pkg="joy" type="joy_node" name="second_joy" >
+    <param name="dev" value="/dev/input/js1"/>
+    <remap from="joy" to="joy2" />
+  </node>
+</launch>

@@ -118,13 +118,14 @@ void loop(){
               
               if(abs(lpot-set_l_angle)>angle_tolerance && abs(rpot-set_r_angle)>angle_tolerance && flag2 == 1)
               { 
-                rotate(set_r_angle,set_l_angle);
+                rotate((set_r_angle),(set_l_angle));
                 loco(0,dirlf,pwmlf,slplf);
                 loco(0,dirlb,pwmlb,slplb);
                 loco(0,dirrf,pwmrf,slprf);
                 loco(0,dirrb,pwmrb,slprb); 
                 
                }
+               
                 
               else
               
@@ -132,8 +133,8 @@ void loop(){
                 flag2 =0 ;
                 analogWrite(lmpwm,0);
                 analogWrite(rmpwm,0);
-                Diagnosis.left_front_vel  = pan_pos ;
-                Diagnosis.right_front_vel = tilt_pos ;
+                Diagnosis.left_front_vel  = lf ;
+                Diagnosis.right_front_vel = rf;
                 Diagnosis.left_back_vel   = lb ;
                 Diagnosis.right_back_vel = rb ; 
                 loco(lf,dirlf,pwmlf,slplf);
@@ -160,10 +161,10 @@ void loop(){
               Diagnosis.right_pot       = analogRead(rpotPin);
               Diagnosis.left_pot_zero   = set_l_zero ; 
               Diagnosis.right_pot_zero  = set_r_zero ; 
-          Diagnosis.left_front_vel  = pan_pos ;
-          Diagnosis.right_front_vel = rf ;    
+          
           set_r_angle=set_r_zero+140;
           set_l_angle=set_l_zero+140;
+          
           diag_pub.publish(&Diagnosis);
           nh.spinOnce();
           delay(1);

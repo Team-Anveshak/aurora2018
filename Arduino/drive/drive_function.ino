@@ -20,17 +20,19 @@ void rotate(int set_r,int set_l)
   
     if(abs(lpot-set_l)>angle_tolerance)
     {
-      
-      if((lpot-set_l)<0){
-        digitalWrite(lmINA,HIGH);
-        digitalWrite(lmINB,LOW);
-        analogWrite(lmpwm,80);
-      }
-      else if((lpot-set_l)>0){
-        digitalWrite(lmINA,LOW);
-        digitalWrite(lmINB,HIGH);
-        analogWrite(lmpwm,80);
-      }
+
+    if((lpot-set_l)<0){
+    digitalWrite(lmINA,HIGH);
+    digitalWrite(lmINB,LOW);
+    analogWrite(lmpwm,80);  
+    }
+  
+    else if ((lpot-set_l)>0){
+    digitalWrite(lmINA,LOW);
+    digitalWrite(lmINB,HIGH);
+    analogWrite(lmpwm,80); 
+    }
+  
     }
     else
     {
@@ -43,16 +45,16 @@ void rotate(int set_r,int set_l)
     if(abs(rpot-set_r)>angle_tolerance)
     {
       
-      if((rpot-set_r)<0)
-      {
-        digitalWrite(rmINA,HIGH);
-        digitalWrite(rmINB,LOW);
-        analogWrite(rmpwm,80);
-      }
-      else if((rpot-set_r)>0)
+      if((rpot-set_r)>0)
       {
         digitalWrite(rmINA,LOW);
         digitalWrite(rmINB,HIGH);
+        analogWrite(rmpwm,80);
+      }
+      else if((rpot-set_r)<0)
+      {
+        digitalWrite(rmINA,HIGH);
+        digitalWrite(rmINB,LOW);
         analogWrite(rmpwm,80);
       }
     }
@@ -74,13 +76,13 @@ void rotate_steer_right(int vel)
     
     digitalWrite(rmINA,LOW);
     digitalWrite(rmINB,HIGH);
-    analogWrite(rmpwm,100);
+    analogWrite(rmpwm,80);
   }
   else if (vel< -0.8){
 
     digitalWrite(rmINA,HIGH);
     digitalWrite(rmINB,LOW);
-    analogWrite(rmpwm,100);
+    analogWrite(rmpwm,80);
     
   }
   
@@ -97,14 +99,14 @@ void rotate_steer_left(int vel)
   if(vel>0.8){
     digitalWrite(lmINA,HIGH);
     digitalWrite(lmINB,LOW);
-    analogWrite(lmpwm,100);
+    analogWrite(lmpwm,80);
     
   }
   
   else if (vel<-0.8){
     digitalWrite(lmINA,LOW);
     digitalWrite(lmINB,HIGH);
-    analogWrite(lmpwm,100);
+    analogWrite(lmpwm,80);
     
   }
   
@@ -116,4 +118,4 @@ void rotate_steer_left(int vel)
   }
  
 }
-///
+

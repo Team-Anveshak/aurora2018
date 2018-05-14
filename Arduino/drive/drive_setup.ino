@@ -3,7 +3,7 @@ void setup(){
   nh.subscribe(locomotion_sub);
 
   TCCR3B = TCCR3B & B11111000 | B00000001;    // set timer 3 divisor to     1 for PWM frequency of 31372.55 Hz  
-  TCCR2B = TCCR2B & B11111000 | B00000001;    // set timer 2 divisor to     1 for PWM frequency of 31372.55 Hz
+  TCCR4B = TCCR4B & B11111000 | B00000001;    // set timer 4 divisor to     1 for PWM frequency of 31372.55 Hz
 
   pan.attach(pan_pin);
   tilt.attach(tilt_pin);
