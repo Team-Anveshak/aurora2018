@@ -51,7 +51,7 @@ class drive():
         self.pan_joy = 0
         self.tilt_joy = 0
 
-        self.filepath = "/home/niyas/aurora2018/src/man_ctrl/config/drive_config.txt"
+        self.filepath = "/home/anveshak/aurora2018/src/man_ctrl/config/drive_config.txt"
         try:
             self.f=open(self.filepath,'r')
             for l in self.f:
@@ -126,6 +126,11 @@ class drive():
             vel.left_back_vel   =  self.zero_turn*100
             vel.right_back_vel  =  self.zero_turn*100
         if(self.mode ==3):
+            vel.left_front_vel  =  self.zero_turn*100                 # make the direction correct
+            vel.right_front_vel =  self.zero_turn*100
+            vel.left_back_vel   =  self.zero_turn*100
+            vel.right_back_vel  =  self.zero_turn*100
+        if(self.mode ==3):
             self.f=open(self.filepath,'w')
             self.f.write(str(self.right_steer_zero)+" "+str(self.left_steer_zero))
             vel.right_steer_vel = self.right_steer_vel
@@ -165,7 +170,7 @@ class drive():
         self.pan_joy = -msg.axes[4]
         self.tilt_joy = msg.axes[5]
         self.straight  = msg.axes[1]
-        self.zero_turn = msg.axes[3]
+        self.zero_turn = msg.axes[2]
         self.steer_straight = msg.axes[2]
 
         # print "joy"
@@ -191,7 +196,9 @@ class drive():
         elif(msg.buttons[2]==1):
             self.mode = 3       #Calibrate mode
         elif(msg.buttons[1]==1):
-            self.mode = 0       #Emergency stop mode
+            self.mode = 5       #Emergency stop mode
+        elif(msg.buttons[9]==1):
+            self.mode = 5
 
         if self.mode == 1:
             if(msg.buttons[7]==1):

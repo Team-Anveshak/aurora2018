@@ -88,13 +88,23 @@ class Planner() :
 					print 'turning'
 					vel.mode = 2
 					if (abs(self.bearing-self.imu_yaw)>self.bearing_tolerance):
-						# if (self.bearing-90)>0 and (self.imu_yaw+90)<90:
-						# 	bearing_diff = self.bearing-(self.imu_yaw+360)
-						# else:
-						bearing_diff = self.bearing-self.imu_yaw
+						if self.bearing>0 and self.imu_yaw<0 :
+							if abs(self.bearing-(self.imu_yaw))>abs(self.bearing-(self.imu_yaw+360)):
+								bearing_diff = self.bearing-(self.imu_yaw+360)
+							else:
+								bearing_diff = self.bearing-(self.imu_yaw)
+							# print self.imu_yaw
+						elif self.bearing<0 and self.imu_yaw>0 :
+							if abs(self.bearing-(self.imu_yaw))>abs((self.bearing+360)-(self.imu_yaw)):
+								bearing_diff = (self.bearing+360)-(self.imu_yaw)
+							else:
+								bearing_diff = self.bearing-(self.imu_yaw)
+						else:
+							bearing_diff = self.bearing-(self.imu_yaw)
+
+						print bearing_diff
 						velocity = self.turn_min + abs(self.bearing-self.imu_yaw)*self.kp_turn
 						velocity = velocity if velocity<self.turn_max else self.turn_max
-						print bearing_diff
 						if (bearing_diff<0):
 							vel.left_front_vel  = velocity                 # make the direction correct
 							vel.right_front_vel =  -velocity
@@ -132,7 +142,22 @@ class Planner() :
 
 				elif  self.dist_prev == self.dist:
 					vel.mode = 1
-					print self.bearing-self.imu_yaw
+					if self.bearing>0 and self.imu_yaw<0 :
+						if abs(self.bearing-(self.imu_yaw))>abs(self.bearing-(self.imu_yaw+360)):
+							bearing_diff = self.bearing-(self.imu_yaw+360)
+						else:
+							bearing_diff = self.bearing-(self.imu_yaw)
+						# print self.imu_yaw
+					elif self.bearing<0 and self.imu_yaw>0 :
+						if abs(self.bearing-(self.imu_yaw))>abs((self.bearing+360)-(self.imu_yaw)):
+							bearing_diff = (self.bearing+360)-(self.imu_yaw)
+						else:
+							bearing_diff = self.bearing-(self.imu_yaw)
+					else:
+						bearing_diff = self.bearing-(self.imu_yaw)
+
+					print bearing_diff
+					# print self.bearing-self.imu_yaw
 					self.theta_r,self.theta_l,self.vtheta_r,self.vtheta_l = self.steer((self.bearing-self.imu_yaw)/30)
 					vel.left_front_vel  = self.forward
 					vel.right_front_vel = self.forward

@@ -39,9 +39,9 @@ class GPS() :
 		self.then=time.time()
 		self.diff=0
 		self.bearing=0
-		self.planner_status = 1
+		self.planner_status = 0
 		self.n=0
-		self.mode='ball'
+		self.mode='gps'
 		self.flag=1
 		self.dist_tolerance    = float(rospy.get_param('~dist_tolerance', 5))
 		self.dist_gps=float(self.dist_tolerance+2.0)
@@ -63,15 +63,14 @@ class GPS() :
 					self.mode =='ball'
 					self.flag = 0
 					# self.planner_status = 0
-					self.dest_lat= float(self.dest_lat_cont[self.n])
-					self.dest_lon= float(self.dest_lon_cont[self.n])
-
 					print '==============changing=============='
 					if (self.n<(len(self.dest_lat_cont)-1)):
+						self.dest_lat= float(self.dest_lat_cont[self.n])
+						self.dest_lon= float(self.dest_lon_cont[self.n])
 						self.n = self.n+1
 					else :
 						print '============stop================'
-				if(abs(self.diff)>self.pub):
+				if(abs(self.diff)>self.pub) and self.n<(len(self.dest_lat_cont)-1):
 					print "Horizontal Distance:"
 					print self.dist_gps
 					print "--------------------"
@@ -87,20 +86,25 @@ class GPS() :
 						if (self.init_lat != 0.0):
 							self.pub_goal.publish(goal)
 					self.then=time.time()
+				else:
+					goal.state =0
+					self.pub_goal.publish(goal)
 
 			elif self.mode =='ball' and self.planner_status ==1:
 				if self.count>4 or self.balldistance < 0.5:
 					self.flag = 1
 					self.mode ='gps'
 					self.count=0
+					print "hey"
 				else:
-					self.count=self.count+1
+					print self.count
+					self.count = self.count+1
 					goal.state == 0
 					self.pub_goal.publish(goal)
 					goal.stop = 1
 					self.pub_goal.publish(goal)
 					try:
-						child = subprocess.Popen(["rosrun","navigation","ball_det.py"])
+						child = subprocess.Popen(["rosrun","man_ctrl","drive_full.py"])
 						child.wait()
 					except:
 						print "cannot open ball_det node"
