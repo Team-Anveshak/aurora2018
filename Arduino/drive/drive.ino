@@ -145,9 +145,10 @@ void loop(){
                }
                   
          }
-         if(mode == 5)
+         if(mode == 4)
         {                              // sidewinder
               flag =1;
+	      flag2= 1;
               rpot = analogRead(rpotPin);
               lpot = analogRead(lpotPin);
               

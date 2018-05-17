@@ -6,7 +6,6 @@ from sensor_msgs.msg import Joy
 from sensor_msgs.msg import LaserScan
 from rover_msgs.msg import Imu_yaw
 import numpy
-import thread
 import math
 
 class drive():
@@ -51,7 +50,7 @@ class drive():
         self.pan_joy = 0
         self.tilt_joy = 0
 
-        self.filepath = "/home/anveshak/aurora2018/src/man_ctrl/config/drive_config.txt"
+        self.filepath = "/home/achu/AURORA-v2/aurora2018/src/man_ctrl/config/drive_config.txt"
         try:
             self.f=open(self.filepath,'r')
             for l in self.f:
@@ -62,8 +61,7 @@ class drive():
         except:
             pass
 
-        thread.start_new_thread( self.spin,())
-        thread.start_new_thread( self.scanning,())
+
 
 
     def spin(self):
@@ -73,19 +71,7 @@ class drive():
             self.main()
             rate.sleep()
 
-    def scanning (self):
-        rate = rospy.Rate(3)
-        while not rospy.is_shutdown():
-            for i in range(315,405):
-                if self.array[i%360] < 5.0:
-                    self.t = self.t+1
-                    if self.t>2:
-                        pass
-                        # rospy.loginfo("stop")
-                else:
-                    self.t = 0
-                    rospy.loginfo("go")
-                rate.sleep()
+
 
     def main(self):
         # rospy.loginfo("start")
@@ -94,23 +80,15 @@ class drive():
         # self.right_steer_zero = 390.0
         # self.left_steer_zero  = 390.0
         if(self.mode==0):
-            vel.right_steer     = self.right_steer_zero # In the joyCallback convert the values adding the the constants also there.
-            vel.left_steer      = self.left_steer_zero
+
             vel.left_front_vel  = 0
             vel.right_front_vel = 0
             vel.left_back_vel   = 0
             vel.right_back_vel  = 0
+            vel.right_steer     = self.right_steer_zero # In the joyCallback convert the values adding the the constants also there.
+            vel.left_steer      = self.left_steer_zero
 
         if(self.mode==1):
-            # if abs(self.steer_straight)<0.1:
-            #     self.cr_theta_r,self.cr_theta_l,self.vtheta_r,self.vtheta_l=self.steer((self.cur_bearing-self.imu_yaw)/30.0)
-            #     vel.right_steer     = self.right_steer_zero+(math.degrees(self.cr_theta_r)*self.kp_forward)
-            #     vel.left_steer      = self.left_steer_zero +(math.degrees(self.cr_theta_l)*self.kp_forward)
-            #     vel.left_front_vel  = self.straight*(50+self.d*50)
-            #     vel.right_front_vel = self.straight*(50+self.d*50)
-            #     vel.left_back_vel   = self.straight*(50+self.d*50)
-            #     vel.right_back_vel  = self.straight*(50+self.d*50)
-            # else:
             self.theta_r,self.theta_l = self.steer(self.steer_straight)
             vel.left_front_vel  = -self.straight*(50+self.d*50)
             vel.right_front_vel = self.straight*(50+self.d*50)
@@ -118,18 +96,22 @@ class drive():
             vel.right_back_vel  = self.straight*(50+self.d*50)
             vel.right_steer     = self.right_steer_zero+(math.degrees(self.theta_r))*4 # In the joyCallback convert the values adding the the constants also there.
             vel.left_steer      = self.left_steer_zero+(math.degrees(self.theta_l))*4
-            # self.cur_bearing = self.imu_yaw
+
 
         if(self.mode ==2):
             vel.left_front_vel  =  self.zero_turn*100                 # make the direction correct
             vel.right_front_vel =  self.zero_turn*100
             vel.left_back_vel   =  self.zero_turn*100
             vel.right_back_vel  =  self.zero_turn*100
-        if(self.mode ==3):
+            vel.right_steer     =  self.right_steer_zero # In the joyCallback convert the values adding the the constants also there.
+            vel.left_steer      =  self.left_steer_zero
+        if(self.mode ==4):
             vel.left_front_vel  =  self.zero_turn*100                 # make the direction correct
             vel.right_front_vel =  self.zero_turn*100
             vel.left_back_vel   =  self.zero_turn*100
             vel.right_back_vel  =  self.zero_turn*100
+            vel.right_steer     = self.right_steer_zero # In the joyCallback convert the values adding the the constants also there.
+            vel.left_steer      = self.left_steer_zero
         if(self.mode ==3):
             self.f=open(self.filepath,'w')
             self.f.write(str(self.right_steer_zero)+" "+str(self.left_steer_zero))
@@ -166,6 +148,7 @@ class drive():
             vtheta_r=1.0
             vtheta_l=1.0
         return theta_r,theta_l
+
     def joyCallback(self,msg):
         self.pan_joy = -msg.axes[4]
         self.tilt_joy = msg.axes[5]
@@ -196,9 +179,9 @@ class drive():
         elif(msg.buttons[2]==1):
             self.mode = 3       #Calibrate mode
         elif(msg.buttons[1]==1):
-            self.mode = 5       #Emergency stop mode
+            self.mode = 4       #Emergency stop mode
         elif(msg.buttons[9]==1):
-            self.mode = 5
+            self.mode = 0
 
         if self.mode == 1:
             if(msg.buttons[7]==1):
