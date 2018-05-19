@@ -64,8 +64,9 @@ void rotate(int set_r,int set_l)
       digitalWrite(rmINB,LOW);
       analogWrite(rmpwm,0);
     }
+    if(analogRead(rpotPin)!=0 && analogRead(lpotPin)!=0){
     rpot = analogRead(rpotPin);
-    lpot = analogRead(lpotPin);
+    lpot = analogRead(lpotPin);}
 }
 
 

@@ -25,9 +25,12 @@ void setup(){
   digitalWrite(slplb,HIGH);
   digitalWrite(slprf,HIGH);
   digitalWrite(slprb,HIGH);
+
+  if(analogRead(rpotPin)!=0 && analogRead(lpotPin)!=0){
+    set_r_zero = analogRead(rpotPin);
+    set_l_zero = analogRead(lpotPin);
+  }
   
-  set_r_zero = analogRead(rpotPin);
-  set_l_zero = analogRead(lpotPin);
   set_r_angle=set_r_zero+140;
   set_l_angle=set_l_zero+140;
   set_r_90_angle=set_r_zero+240;

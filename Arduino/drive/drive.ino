@@ -121,9 +121,10 @@ void loop(){
         else if(mode == 2)
         {                              // zero turn mode
               flag =1;
+              if(analogRead(rpotPin)!=0 && analogRead(lpotPin)!=0){
               rpot = analogRead(rpotPin);
               lpot = analogRead(lpotPin);
-              
+              }
               if(abs(lpot-set_l_angle)>angle_tolerance && abs(rpot-set_r_angle)>angle_tolerance && flag2 == 1)
               { 
                 rotate((set_r_angle),(set_l_angle));
@@ -162,8 +163,9 @@ void loop(){
               flag3 =1;
               rotate_steer_left(left_steer_vel);
               rotate_steer_right(right_steer_vel); 
+              if(analogRead(rpotPin)!=0 && analogRead(lpotPin)!=0){
               set_r_zero = analogRead(rpotPin);
-              set_l_zero = analogRead(lpotPin);
+              set_l_zero = analogRead(lpotPin);}
             
          }
          
@@ -171,8 +173,9 @@ void loop(){
           {                              // sidewinder
             flag = 1;
             flag2 = 1;
+            if(analogRead(rpotPin)!=0 && analogRead(lpotPin)!=0){
             rpot = analogRead(rpotPin);
-            lpot = analogRead(lpotPin);
+            lpot = analogRead(lpotPin);}
             
             if(abs(lpot-set_l_90_angle)>angle_tolerance && abs(rpot-set_r_90_angle)>angle_tolerance && flag3 == 1)
             { 
