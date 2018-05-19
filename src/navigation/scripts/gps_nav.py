@@ -20,14 +20,18 @@ class GPS() :
 		rospy.Subscriber("planner_status",Planner_msg, self.plannerCallback)
 		rospy.Subscriber("destination_ball", Goal, self.goalCallback_ball)
 
-		file_path = "/home/achu/aurora2018/src/navigation/config/gps_data.txt"
-		self.f=open(file_path,'r')
+		file_path = "/home/anveshak/aurora2018/src/navigation/config/gps_data.txt"
+		try:
+			self.f=open(file_path,'r')
+			self.dest_lat_cont,self.dest_lon_cont = [],[]
+			for l in self.f:
+				row = l.split()
+				self.dest_lat_cont.append(row[0])
+				self.dest_lon_cont.append(row[1])
+		except Exception:
+			print "GPS data file not opened"
 
-		self.dest_lat_cont,self.dest_lon_cont = [],[]
-		for l in self.f:
-			row = l.split()
-			self.dest_lat_cont.append(row[0])
-			self.dest_lon_cont.append(row[1])
+
 
 
 
@@ -60,7 +64,7 @@ class GPS() :
 					goal.state = 0
 					self.pub_goal.publish(goal)
 
-					self.mode =='ball'
+					self.mode ='ball'
 					self.flag = 0
 					# self.planner_status = 0
 					print '==============changing=============='
@@ -69,7 +73,10 @@ class GPS() :
 						self.dest_lon= float(self.dest_lon_cont[self.n])
 						self.n = self.n+1
 					else :
+						goal.state =0
+						self.pub_goal.publish(goal)
 						print '============stop================'
+
 				if(abs(self.diff)>self.pub) and self.n<(len(self.dest_lat_cont)-1):
 					print "Horizontal Distance:"
 					print self.dist_gps
@@ -77,8 +84,7 @@ class GPS() :
 					print "Bearing:"
 					print self.bearing
 					print "--------------------"
-					print "========lat============"
-					print self.dest_lat
+
 					if self.mode=='gps':
 						goal.distance=self.dist_gps
 						goal.bearing=self.bearing
@@ -86,20 +92,17 @@ class GPS() :
 						if (self.init_lat != 0.0):
 							self.pub_goal.publish(goal)
 					self.then=time.time()
-				else:
-					goal.state =0
-					self.pub_goal.publish(goal)
 
 			elif self.mode =='ball' and self.planner_status ==1:
 				if self.count>4 or self.balldistance < 0.5:
 					self.flag = 1
 					self.mode ='gps'
 					self.count=0
-					print "hey"
+
 				else:
 					print self.count
 					self.count = self.count+1
-					goal.state == 0
+					goal.state = 0
 					self.pub_goal.publish(goal)
 					goal.stop = 1
 					self.pub_goal.publish(goal)

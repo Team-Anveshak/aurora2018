@@ -19,8 +19,8 @@
 #define lmINA 46 
 #define lmINB 48
 #define lmpwm 10
-#define pan_pin 11
-#define tilt_pin 12
+#define pan_pin 12
+#define tilt_pin 11
 
 
 #define lpotPin A9
@@ -33,7 +33,7 @@ int rot_mode=0,right_steer = 300,left_steer = 300;
 bool state=1;
 int mode=0;
 
-int set_r_zero = 380,set_l_zero = 395 ,set_r_angle =210,set_l_angle=200,set_l_90_angle=390,set_r_90_angle=390;
+int set_r_zero = 380,set_l_zero = 395 ,set_r_angle =390,set_l_angle=390,set_l_90_angle=390,set_r_90_angle=390;
 int left_steer_vel = 0,right_steer_vel = 0 ;
 
 int flag =0;

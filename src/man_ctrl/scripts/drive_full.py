@@ -3,8 +3,6 @@ import rospy
 from rover_msgs.msg import WheelVelocity
 from rover_msgs.msg import Diag_wheel
 from sensor_msgs.msg import Joy
-from sensor_msgs.msg import LaserScan
-from rover_msgs.msg import Imu_yaw
 import numpy
 import math
 
@@ -18,8 +16,6 @@ class drive():
 
         rospy.Subscriber("diag/wheel_vel",Diag_wheel,self.Callback)
         rospy.Subscriber("/joy",Joy,self.joyCallback)
-        rospy.Subscriber("/scan",LaserScan,self.call)
-        rospy.Subscriber("imu", Imu_yaw, self.imuCallback)
 
         self.n = 360
         self.array  = numpy.empty(self.n, dtype = float)
@@ -39,7 +35,7 @@ class drive():
         self.steer_vel=0.0
         self.left_steer_vel=0.0
         self.right_steer_vel=0.0
-        self.mode=1
+        self.mode=0
         self.right_steer_zero = 390.0
         self.left_steer_zero  = 390.0
         self.imu_yaw = 0
@@ -50,7 +46,7 @@ class drive():
         self.pan_joy = 0
         self.tilt_joy = 0
 
-        self.filepath = "/home/achu/AURORA-v2/aurora2018/src/man_ctrl/config/drive_config.txt"
+        self.filepath = "/home/anveshak/aurora2018/src/man_ctrl/config/drive_config.txt"
         try:
             self.f=open(self.filepath,'r')
             for l in self.f:
@@ -58,27 +54,20 @@ class drive():
                 self.right_steer_zero = int(row[0])
                 self.left_steer_zero  = int(row[1])
             self.f.close()
-        except:
-            pass
-
-
-
+        except Exception:
+            print "Error opening file initially"
 
     def spin(self):
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
-            # print "hay"
             self.main()
             rate.sleep()
 
-
-
     def main(self):
-        # rospy.loginfo("start")
+
         vel = WheelVelocity()
         vel.mode = self.mode
-        # self.right_steer_zero = 390.0
-        # self.left_steer_zero  = 390.0
+
         if(self.mode==0):
 
             vel.left_front_vel  = 0
@@ -106,18 +95,21 @@ class drive():
             vel.right_steer     =  self.right_steer_zero # In the joyCallback convert the values adding the the constants also there.
             vel.left_steer      =  self.left_steer_zero
         if(self.mode ==4):
-            vel.left_front_vel  =  self.zero_turn*100                 # make the direction correct
-            vel.right_front_vel =  self.zero_turn*100
+            vel.left_front_vel  =  -self.zero_turn*100                 # make the direction correct
+            vel.right_front_vel =  -self.zero_turn*100
             vel.left_back_vel   =  self.zero_turn*100
             vel.right_back_vel  =  self.zero_turn*100
-            vel.right_steer     = self.right_steer_zero # In the joyCallback convert the values adding the the constants also there.
-            vel.left_steer      = self.left_steer_zero
+            vel.right_steer     =  self.right_steer_zero # In the joyCallback convert the values adding the the constants also there.
+            vel.left_steer      =  self.left_steer_zero
         if(self.mode ==3):
-            self.f=open(self.filepath,'w')
-            self.f.write(str(self.right_steer_zero)+" "+str(self.left_steer_zero))
-            vel.right_steer_vel = self.right_steer_vel
-            vel.left_steer_vel  = self.left_steer_vel
-            self.f.close()
+            try:
+                self.f=open(self.filepath,'w')
+                self.f.write(str(self.right_steer_zero)+" "+str(self.left_steer_zero))
+                vel.right_steer_vel = self.right_steer_vel
+                vel.left_steer_vel  = self.left_steer_vel
+                self.f.close()
+            except Exception:
+                print "Error in handling file while calibrating"
 
         vel.pan_joy = self.pan_joy
         vel.tilt_joy = self.tilt_joy
@@ -125,28 +117,28 @@ class drive():
 
     def steer(self,value):
         if(value<0):
-            theta_r = -math.radians(min(abs(12.6*value),12.6))
-            theta_l = math.radians(min(abs(20*value),20))
-            try:
-                radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
-                vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
-                vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
-            except:
-                pass
+            theta_r = -math.radians(min(abs(12.6*value),20))
+            theta_l = math.radians(min(abs(20*value),12.6))
+            # try:
+            #     radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
+            #     vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
+            #     vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
+            # except Exception:
+            #     pass
         elif(value>=0):
-            theta_r = math.radians(min(abs(20*value),20))
-            theta_l = -math.radians(min(abs(12.6*value),12.6))
-            try:
-                radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
-                vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
-                vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
-            except:
-                pass
+            theta_r = math.radians(min(abs(20*value),12.6))
+            theta_l = -math.radians(min(abs(12.6*value),20))
+            # try:
+            #     radius_of_curve = (self.chassis_length/(2*math.tan(max(abs(self.theta_r),abs(self.theta_l))))) - (self.chassis_width/2)
+            #     vtheta_r = self.chassis_length/(2*math.sin(self.theta_r)*self.radius_of_curve)
+            #     vtheta_l = self.chassis_length/(2*math.sin(self.theta_l)*self.radius_of_curve)
+            # except Exception:
+            #     pass
         else:
             theta_r =0.0
             theta_l =0.0
-            vtheta_r=1.0
-            vtheta_l=1.0
+            # vtheta_r=1.0
+            # vtheta_l=1.0
         return theta_r,theta_l
 
     def joyCallback(self,msg):
@@ -185,16 +177,14 @@ class drive():
 
         if self.mode == 1:
             if(msg.buttons[7]==1):
+                if self.d <4:
+                    self.d = self.d + 1
                 print("Max speed is {}".format(100+(self.d-1)*50))
-                self.d = self.d + 1
             elif(msg.buttons[6]==1):
+                if self.d >1:
+                    self.d = self.d - 1
                 print("Max speed is {}".format(100+(self.d-1)*50))
-                self.d = self.d - 1
 
-        if self.d <=1:
-            self.d = 1
-        if self.d >=4:
-            self.d = 4
 
     def Callback(self,msg):
 

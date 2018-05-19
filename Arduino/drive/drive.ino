@@ -14,8 +14,6 @@ rover_msgs::Diag_wheel Diagnosis;
 ros::Publisher diag_pub("diag/wheel_vel", &Diagnosis);
 
 
-
-
 void roverMotionCallback(const rover_msgs::WheelVelocity& RoverVelocity){
   
   lf = int(constrain(RoverVelocity.left_front_vel,-255,255));
@@ -73,16 +71,19 @@ void loop(){
         if(mode == 0)
         {   flag =1;                         // emergency stop
             flag2 = 1;
+            flag3 = 1;
             loco(0,dirlf,pwmlf,slplf);
             loco(0,dirlb,pwmlb,slplb);
             loco(0,dirrf,pwmrf,slprf);
             loco(0,dirrb,pwmrb,slprb);
+            rotate(set_r_zero,set_l_zero);
+            
         }
          
-        if(mode == 1)
+        else if(mode == 1)
         {                  // normal mode
             flag2 = 1;
-	    flag3 = 1;
+	          flag3 = 1;
             rpot = analogRead(rpotPin);
             lpot = analogRead(lpotPin);
             
@@ -96,22 +97,28 @@ void loop(){
               
             }
             else{
-              Diagnosis.left_front_vel  = lf ;
-              Diagnosis.right_front_vel = rf ;
-              Diagnosis.left_back_vel   = lb ;
-              Diagnosis.right_back_vel = rb ; 
               flag =0;
+
+              analogWrite(lmpwm,0);
+              analogWrite(rmpwm,0);
+                
               rotate(right_steer,left_steer);
               loco(lf,dirlf,pwmlf,slplf);
               loco(lb,dirlb,pwmlb,slplb);
               loco(rf,dirrf,pwmrf,slprf);
-              loco(rb,dirrb,pwmrb,slprb);    
+              loco(rb,dirrb,pwmrb,slprb); 
+              
+              Diagnosis.left_front_vel  = lf ;
+              Diagnosis.right_front_vel = rf ;
+              Diagnosis.left_back_vel   = lb ;
+              Diagnosis.right_back_vel = rb ;    
+              
             }
             
          }
         
          
-        if(mode == 2)
+        else if(mode == 2)
         {                              // zero turn mode
               flag =1;
               rpot = analogRead(rpotPin);
@@ -126,77 +133,92 @@ void loop(){
                 loco(0,dirrb,pwmrb,slprb); 
                 
                }
-               
                 
-              else
-              
+              else   
               { 
                 flag2 =0 ;
+                
                 analogWrite(lmpwm,0);
                 analogWrite(rmpwm,0);
-                Diagnosis.left_front_vel  = lf ;
-                Diagnosis.right_front_vel = rf;
-                Diagnosis.left_back_vel   = lb ;
-                Diagnosis.right_back_vel = rb ; 
+                
                 loco(lf,dirlf,pwmlf,slplf);
                 loco(lb,dirlb,pwmlb,slplb);
                 loco(rf,dirrf,pwmrf,slprf);
                 loco(rb,dirrb,pwmrb,slprb);
-               }
-                  
-         }
-         if(mode == 4)
-        {                              // sidewinder
-              flag =1;
-	      flag2= 1;
-              rpot = analogRead(rpotPin);
-              lpot = analogRead(lpotPin);
-              
-              if(abs(lpot-set_l_angle)>angle_tolerance && abs(rpot-set_r_angle)>angle_tolerance && flag3 == 1)
-              { 
-                rotate((set_r_90_angle=39),(set_l_90_angle=39));
-                loco(0,dirlf,pwmlf,slplf);
-                loco(0,dirlb,pwmlb,slplb);
-                loco(0,dirrf,pwmrf,slprf);
-                loco(0,dirrb,pwmrb,slprb); 
-                
-               }
-               
-                
-              else
-              
-              { 
-                flag3 =0 ;
-                analogWrite(lmpwm,0);
-                analogWrite(rmpwm,0);
+
                 Diagnosis.left_front_vel  = lf ;
                 Diagnosis.right_front_vel = rf;
                 Diagnosis.left_back_vel   = lb ;
                 Diagnosis.right_back_vel = rb ; 
-                loco(lf,dirlf,pwmlf,slplf);
-                loco(lb,dirlb,pwmlb,slplb);
-                loco(rf,dirrf,pwmrf,slprf);
-                loco(rb,dirrb,pwmrb,slprb);
                }
                   
          }
+        
          
-        if(mode == 3)
+        else if(mode == 3)
         {                            // calibration mode
               flag =1;
               flag2 = 1;
+              flag3 =1;
               rotate_steer_left(left_steer_vel);
               rotate_steer_right(right_steer_vel); 
               set_r_zero = analogRead(rpotPin);
               set_l_zero = analogRead(lpotPin);
             
          }
+         
+         else if(mode == 4)
+          {                              // sidewinder
+            flag = 1;
+            flag2 = 1;
+            rpot = analogRead(rpotPin);
+            lpot = analogRead(lpotPin);
+            
+            if(abs(lpot-set_l_90_angle)>angle_tolerance && abs(rpot-set_r_90_angle)>angle_tolerance && flag3 == 1)
+            { 
+              rotate((set_r_90_angle),(set_l_90_angle));
+              loco(0,dirlf,pwmlf,slplf);
+              loco(0,dirlb,pwmlb,slplb);
+              loco(0,dirrf,pwmrf,slprf);
+              loco(0,dirrb,pwmrb,slprb); 
+              
+             }
+                
+            else
+            
+            { 
+              flag3 =0 ;
+              analogWrite(lmpwm,0);
+              analogWrite(rmpwm,0);
+              
+              Diagnosis.left_front_vel  = lf ;
+              Diagnosis.right_front_vel = rf;
+              Diagnosis.left_back_vel   = lb ;
+              Diagnosis.right_back_vel = rb ; 
+              
+              loco(lf,dirlf,pwmlf,slplf);
+              loco(lb,dirlb,pwmlb,slplb);
+              loco(rf,dirrf,pwmrf,slprf);
+              loco(rb,dirrb,pwmrb,slprb);
+             }
+                
+           }
+           else {
+              flag =1;                         // emergency stop
+              flag2 = 1;
+              flag3 = 1;
+              loco(0,dirlf,pwmlf,slplf);
+              loco(0,dirlb,pwmlb,slplb);
+              loco(0,dirrf,pwmrf,slprf);
+              loco(0,dirrb,pwmrb,slprb);
+              rotate(set_r_zero,set_l_zero);
+            }
 
         
-              Diagnosis.left_pot        = analogRead(lpotPin); 
-              Diagnosis.right_pot       = analogRead(rpotPin);
-              Diagnosis.left_pot_zero   = set_l_zero ; 
-              Diagnosis.right_pot_zero  = set_r_zero ; 
+          Diagnosis.left_pot        = analogRead(lpotPin); 
+          Diagnosis.right_pot       = analogRead(rpotPin);
+          Diagnosis.left_pot_zero   = set_l_zero ; 
+          Diagnosis.right_pot_zero  = set_r_zero ; 
           
           set_r_angle=set_r_zero+140;
           set_l_angle=set_l_zero+140;

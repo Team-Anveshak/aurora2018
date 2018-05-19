@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from sensor_msgs.msg import NavSatFix
-from rover_msgs.msg import Imu
+from rover_msgs.msg import Imu_yaw
 from rover_msgs.msg import WheelVelocity
 from rover_msgs.msg import Planner_msg
 from rover_msgs.msg import Goal
@@ -18,7 +18,7 @@ class Planner() :
 		self.pub_motor = rospy.Publisher("loco/wheel_vel", WheelVelocity,queue_size=10)
 		self.pub_planner = rospy.Publisher("planner_status", Planner_msg,queue_size=10)
 
-		rospy.Subscriber("imu", Imu, self.imuCallback)
+		rospy.Subscriber("imu", Imu_yaw, self.imuCallback)
 		rospy.Subscriber("destination_gps", Goal, self.goalCallback_gps)
 		rospy.Subscriber("destination_ball", Goal, self.goalCallback_ball)
 
@@ -57,7 +57,7 @@ class Planner() :
 		self.right_steer_zero = 390.0
 		self.left_steer_zero  = 390.0
 
-		self.filepath = "/home/achu/aurora2018/src/man_ctrl/config/drive_config.txt"
+		self.filepath = "/home/anveshak/aurora2018/src/man_ctrl/config/drive_config.txt"
 		try:
 			self.f=open(self.filepath,'r')
 			for l in self.f:
@@ -66,8 +66,8 @@ class Planner() :
 				self.right_steer_zero = int(row[0])
 				self.left_steer_zero  = int(row[1])
 				self.f.close()
-		except:
-			pass
+		except Exception:
+			print "File not opened intially"
 
 	def spin(self):
 
@@ -158,7 +158,7 @@ class Planner() :
 
 					print bearing_diff
 					# print self.bearing-self.imu_yaw
-					self.theta_r,self.theta_l,self.vtheta_r,self.vtheta_l = self.steer((self.bearing-self.imu_yaw)/30)
+					# self.theta_r,self.theta_l,self.vtheta_r,self.vtheta_l = self.steer((self.bearing-self.imu_yaw)/30)
 					vel.left_front_vel  = self.forward
 					vel.right_front_vel = self.forward
 					vel.left_back_vel   = self.forward
@@ -231,9 +231,8 @@ class Planner() :
 		return theta_r,theta_l,vtheta_r,vtheta_l
 
 	def imuCallback(self,msg):
-
-		self.imu_yaw=msg.yaw
-		self.imu_yaw =-self.imu_yaw
+		self.imu_yaw=-msg.yaw
+		# self.imu_yaw =-self.imu_yaw
 
 
 	def goalCallback_gps(self,msg):

@@ -54,20 +54,20 @@ class Source:
 
         goal=Goal()
         vel = WheelVelocity()
-        
+
         velocity = 40
         vel.mode = 2
         vel.left_front_vel  = velocity                 # make the direction correct
-        vel.right_front_vel =  -velocity
+        vel.right_front_vel = velocity
         vel.left_back_vel   = velocity
-        vel.right_back_vel  = - velocity
+        vel.right_back_vel  = velocity
         bearing = 0
 
         self.pub_motor.publish(vel)
 
         started = time.time()
-        
-        imag = cv2.imread('/home/niyas/aurora2018/src/navigation/scripts/ball.jpg',1)
+
+        imag = cv2.imread('/home/anveshak/aurora2018/src/navigation/scripts/ball.jpg',1)
 
         imags=imag
 
@@ -115,13 +115,13 @@ class Source:
         cv2.rectangle(imag,(x1,y1),(x1+w,y1+h),(0,255,0),2)
 
         # cv2.imshow("encl_circle", imag)
-            
+
         # initialize the known distance from the camera to the object
         KNOWN_DISTANCE = 50.0
-         
+
         # initialize the known object width
         KNOWN_WIDTH = 6.5
-          
+
         perWidth=2*radius
         focalLength = (perWidth * KNOWN_DISTANCE) / KNOWN_WIDTH
 
@@ -139,7 +139,7 @@ class Source:
         done=0
 
         cvb = CvBridge()
-	
+
         while not rospy.core.is_shutdown():
 
             ret, frame = cap.read()
@@ -181,7 +181,7 @@ class Source:
                 #cv2.rectangle(im,(x,y),(x+w,y+h),(200,0,0),2)
 
                 ((x, y), radius) = cv2.minEnclosingCircle(c)
-                    
+
                 if radius>5:
                     M = cv2.moments(c)
                     try:
@@ -198,7 +198,7 @@ class Source:
                         marker=cv2.minAreaRect(c)
                         perWidth=2*radius#marker[1][0]
                         distance = (KNOWN_WIDTH * focalLength) / perWidth
-                    
+
                         count_y+=1
                     except :
                         count_n+=1
@@ -208,6 +208,8 @@ class Source:
                 if ((center[0] in range(169,474)) and count_y>30 and count_n<10 and done==0) :
                     goal.bearing = bearing
                     goal.distance = distance
+                    goal.state = 1
+                    goal.stop=0
                     self.pub_goal.publish(goal)
                     time.sleep(0.03)
                     outcome = 'ball found'
@@ -221,6 +223,6 @@ def main(args):
     rospy.init_node('Source')
     s.spin()
     rospy.spin()
-    
+
 if __name__ == '__main__':
     main(sys.argv)
